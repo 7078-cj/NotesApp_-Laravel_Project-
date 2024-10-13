@@ -12,6 +12,7 @@
     @csrf
     @method('PUT')
     <input type="text" name="title" value="{{$note->title}}">
+    <input type="text" name="description" placeholder="description" value="{{$note->description}}">
     <textarea name="body">{{$note->body}}</textarea>
     <button>Save Changes</button>
   </form>

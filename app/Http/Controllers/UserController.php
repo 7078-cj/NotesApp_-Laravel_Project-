@@ -20,7 +20,7 @@ class UserController extends Controller
         $user = User::create($registration);
         auth()->guard('web')->login($user);
 
-        return redirect('/login-user');
+        return redirect('/');
     }
 
     public function logout(){

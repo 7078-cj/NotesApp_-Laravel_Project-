@@ -10,10 +10,13 @@ class NoteController extends Controller
     public function createNote(Request $request){
         $note = $request->validate([
             'title'=>'required',
+            'description'=>'required',
             'body'=>'required'
+
         ]);
 
         $note['title']=strip_tags($note['title']);
+        $note['description']=strip_tags($note['description']);
         $note['body']=strip_tags($note['body']);
         $note['user_id'] = auth()->guard('web')->id();
 
@@ -25,7 +28,7 @@ class NoteController extends Controller
     }
 
     public function getEditNote(Note $note,Request $request){
-        if (auth()->user()->id !== $note['user_id']) {
+        if (auth()->guard('web')->user()->id !== $note['user_id']) {
             return redirect('/');
         }
 
@@ -33,23 +36,25 @@ class NoteController extends Controller
     }
 
     public function deleteNote(Note $note) {
-        if (auth()->user()->id === $note['user_id']) {
+        if (auth()->guard('web')->user()->id === $note['user_id']) {
             $note->delete();
         }
         return redirect('/');
     }
 
     public function actuallyUpdateNote(Note $note, Request $request) {
-        if (auth()->user()->id !== $note['user_id']) {
+        if (auth()->guard('web')->user()->id !== $note['user_id']) {
             return redirect('/');
         }
 
         $incomingFields = $request->validate([
             'title' => 'required',
+            'description'=>'required',
             'body' => 'required'
         ]);
 
         $incomingFields['title'] = strip_tags($incomingFields['title']);
+        $note['description']=strip_tags($note['description']);
         $incomingFields['body'] = strip_tags($incomingFields['body']);
 
         $note->update($incomingFields);
