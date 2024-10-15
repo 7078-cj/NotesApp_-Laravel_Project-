@@ -11,9 +11,8 @@
         @foreach ($notes as $note )
 
         <div style="background-color:gray; padding: 10px; margin: 10px;">
-            <h3>{{$note->title}} by {{$note->user->name}} email:{{$note->user->email}}</h3>
+            <h3><a href="/note/{{ $note->id }}">{{$note->title}}</a> by {{$note->user->name}} email:{{$note->user->email}}</h3>
             <h2>{{$note->description}}</h2>
-            <h1>{{$note->body}}</h1>
             <p><a href="/edit-note/{{$note->id}}">Edit</a></p>
             <form action="/delete-note/{{$note->id}}" method="POST">
                 @csrf
@@ -29,7 +28,6 @@
             @csrf
             <input type="text" name="title" placeholder="Title">
             <input type="text" name="description" placeholder="description">
-            <textarea name="body" id="" placeholder="Body content"></textarea>
             <button>Create note</button>
         </form>
     </div>

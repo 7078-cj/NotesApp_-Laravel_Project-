@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Body;
 use App\Models\Note;
 use Illuminate\Http\Request;
 
@@ -11,13 +12,13 @@ class NoteController extends Controller
         $note = $request->validate([
             'title'=>'required',
             'description'=>'required',
-            'body'=>'required'
+            
 
         ]);
 
         $note['title']=strip_tags($note['title']);
         $note['description']=strip_tags($note['description']);
-        $note['body']=strip_tags($note['body']);
+       
         $note['user_id'] = auth()->guard('web')->id();
 
         Note::create($note);
@@ -25,6 +26,16 @@ class NoteController extends Controller
         return redirect('/');
         
 
+    }
+
+    public function getNote(Note $note,Request $request){
+        if (auth()->guard('web')->check()) {
+            
+            $body = $note->noteBodys()->get();
+            return view('note', ['note' => $note,'bodies'=>$body]);
+        }
+
+        return redirect('/');
     }
 
     public function getEditNote(Note $note,Request $request){
@@ -50,12 +61,12 @@ class NoteController extends Controller
         $incomingFields = $request->validate([
             'title' => 'required',
             'description'=>'required',
-            'body' => 'required'
+            
         ]);
 
         $incomingFields['title'] = strip_tags($incomingFields['title']);
         $note['description']=strip_tags($note['description']);
-        $incomingFields['body'] = strip_tags($incomingFields['body']);
+       
 
         $note->update($incomingFields);
         return redirect('/');

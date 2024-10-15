@@ -5,20 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Note extends Model
+class Body extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'title',
-        'description',
+        'note_id',
         'user_id',
+        'image',
+        'message',
     ];
-    
     public function user() {
         return $this->belongsTo(User::class, 'user_id');
     }
-    public function noteBodys(){
-        
-        return $this->hasMany(Body::class,'note_id');
-    }
+  
 }
