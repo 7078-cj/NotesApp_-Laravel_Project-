@@ -29,7 +29,7 @@
                     
                     <textarea id="comment" name="message" class="w-full text-sm text-gray-900 bg-white border-0 dark:bg-slate-200 focus:ring-0  dark:placeholder-slate-400 px-5 py-2.5 text-center" placeholder="Write a Note..." required ></textarea>
                 </div>
-                <div class="flex items-center justify-between px-3 py-2 border-t dark:border-slate-600">
+                <div class="flex items-center justify-between px-3 py-2 border-t bg-gradient-to-r from-indigo-200 to-blue-100">
                     <button type="submit" class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-slate-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">
                         Post Note Body
                     </button>
