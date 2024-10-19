@@ -1,4 +1,4 @@
-<article class="max-w-[500px]  overflow-hidden shadow transition hover:shadow-lg border border-gray-200 rounded-lg m-3 ">
+<article class="max-w-[500px] overflow-hidden shadow transition hover:shadow-lg border border-gray-200 rounded-lg m-3 ">
                
               
     <div class="bg-white p-4 sm:p-6 ">

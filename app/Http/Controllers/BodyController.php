@@ -52,7 +52,7 @@ class BodyController extends Controller
             
                 if ($request->hasFile('image')) {
                     $image = public_path('storage/'.$body->image);
-                    if (File::exists($image)){
+                    if (File::exists($image && $body->image)){
                         unlink($image);
                     }
                     $file = $request->file('image');
