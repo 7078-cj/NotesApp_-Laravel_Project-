@@ -12,6 +12,7 @@ class NoteController extends Controller
         $note = $request->validate([
             'title'=>'required',
             'description'=>'required',
+            'visibility'=>'required'
             
 
         ]);
@@ -29,13 +30,22 @@ class NoteController extends Controller
     }
 
     public function getNote(Note $note,Request $request){
-        if (auth()->guard('web')->check()) {
-            
-            $body = $note->noteBodys()->get();
-            return view('note', ['note' => $note,'bodies'=>$body]);
+        $user = auth()->user();
+
+
+        if($note->visibility == "private" && auth()->guard('web')->user()->name != $note->user->name){
+            return redirect()->back();
         }
+        else{
+            if (auth()->guard('web')->check()) {
+                
+                $body = $note->noteBodys()->orderBy('created_at','asc')->get();
+                return view('note', ['note' => $note,'bodies'=>$body,'user'=>$user]);
+            }
 
         return redirect('/');
+        }
+            
     }
 
     public function getEditNote(Note $note,Request $request){
@@ -61,6 +71,7 @@ class NoteController extends Controller
         $incomingFields = $request->validate([
             'title' => 'required',
             'description'=>'required',
+            'visibility'=>'required'
             
         ]);
 
@@ -70,5 +81,32 @@ class NoteController extends Controller
 
         $note->update($incomingFields);
         return redirect('/');
+    }
+
+    public function userNotes(){
+        if (auth()->guard('web')->check()) {
+            $notes =[];
+            $user = auth()->user();
+            //    $posts = Post::all();
+                    if(auth()->guard('web')->check()){
+                        $user = auth()->user();
+                        $notes = $user->userNotes()->latest()->get();
+                    }
+            
+                    return view('userNotes',['notes' => $notes]);
+        } else {
+            return redirect('/login-user'); // Otherwise, redirect to the login page
+        }
+    }
+    public function communityNotes(){
+        if (auth()->guard('web')->check()) {
+            $user = auth()->user();
+            $public_notes=Note::where('visibility','public')->get();
+            
+            
+                    return view('communityNotes',['notes'=>$public_notes,'user'=>$user]);
+        } else {
+            return redirect('/login-user'); 
+        }
     }
 }

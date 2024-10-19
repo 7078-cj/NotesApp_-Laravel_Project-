@@ -1,40 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-<div class=""style="border: 3px solid black;">
-        <h2>All Notes</h2>
-        @foreach ($notes as $note )
-
-        <div style="background-color:gray; padding: 10px; margin: 10px;">
-            <h3><a href="/note/{{ $note->id }}">{{$note->title}}</a> by {{$note->user->name}} email:{{$note->user->email}}</h3>
-            <h2>{{$note->description}}</h2>
-            <p><a href="/edit-note/{{$note->id}}">Edit</a></p>
-            <form action="/delete-note/{{$note->id}}" method="POST">
-                @csrf
-                @method('DELETE')
-                <button>Delete</button>
-            </form>
+@extends('index')
+    @include('components.navbar')
+<div class="flex flex-row gap-3">
+        <div class="">
+            @include('components.leftMenu')    
         </div>
-        @endforeach
+        
+        <div class="bg-slate-300 w-screen p-5">
+              <div class="flex flex-row gap-11 flex-wrap m-5">
+                    
+                    @foreach ($notes as $note )
+                    
+                    @include('components.notesCard')
+                    @endforeach
+                </div>
+        </div>
+        
+              
+                    
+       
+        
     
-        <div class="" style="border: 3px solid black;">
-        <h2>Create New Notes</h2>
-        <form action="/create-note" method="POST">
-            @csrf
-            <input type="text" name="title" placeholder="Title">
-            <input type="text" name="description" placeholder="description">
-            <button>Create note</button>
-        </form>
-    </div>
-    <form action="/logout" method="POST">
-        @csrf
-        <button>logout</button>
-    </form>
-</body>
-</html>
+        
+</div>
+
+
+    {{-- @include('components.communityNotes') --}}
+
 
