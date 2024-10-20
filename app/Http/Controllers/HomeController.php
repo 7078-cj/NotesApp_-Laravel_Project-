@@ -12,6 +12,8 @@ class HomeController extends Controller
         
             $notes =[];
             $public_notes=Note::where('visibility','public')->get();
+            
+
             $user = auth()->user();
             //    $posts = Post::all();
                     if(auth()->guard('web')->check()){

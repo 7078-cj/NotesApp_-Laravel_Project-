@@ -78,6 +78,7 @@ class BodyController extends Controller
                 }
             }
             $body->delete();
+            return redirect("/note/$body->note_id" );
         
     }
 }

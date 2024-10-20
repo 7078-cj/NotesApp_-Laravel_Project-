@@ -67,6 +67,9 @@ class UserController extends Controller
             $filePath = $file->store('uploads/avatar', 'public'); // Store in 'public/uploads'
             $update['avatar'] = $filePath; // Save new avatar path
         }
+        else{
+            $update['avatar'] = $user->avatar;
+        }
 
         if (empty($update['password'])) {
             $update['password'] = $user->password; // Keep existing password

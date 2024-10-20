@@ -32,7 +32,10 @@
                     <input type="file" name="image" id="product-name" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"  >
                 </div>
                 @if ($body->image)
-                    <img src="{{ asset('storage/' . $body->image) }}" alt=""style="width:200px;height:200px">
+                <div class="flex flex-wrap w-64 h-64">
+                    <img src="{{ asset('storage/' . $body->image) }}" alt="" class="w-full">
+                </div>
+                    
                 @endif
                 
                 <div class="col-span-full">

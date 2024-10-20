@@ -1,4 +1,4 @@
-<article class="max-w-[500px] overflow-hidden shadow transition hover:shadow-lg border border-gray-200 rounded-lg m-3 ">
+<article class="max-w-[500px] overflow-hidden  transition hover:scale-105  rounded-lg m-3 ">
                
               
     <div class="bg-white p-4 sm:p-6 ">
@@ -6,7 +6,7 @@
   
       
         <div class="mt-0.5 text-lg text-gray-900  gap-3 m-5 flex flex-col"> 
-            {{-- @if ($body->image) --}}
+            @if ($body->image)
                 <div>
                 <img
                 alt=""
@@ -15,7 +15,7 @@
                     'w-full h-80  rounded-lg mb-4':"hidden"}}">  
                 </div>
             
-            {{-- @endif --}}
+            @endif
             <p class=" text-gray-600 mb-2 break-words text-center">{{ $body->message }}</p>
         
         </div>
@@ -48,14 +48,14 @@
                         </a></p>
                         
                         <form action="/delete-body/{{$body->id}}" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                
-                                                    
-                                                    <div class="flex gap-2 text-gray-600 hover:scale-110 duration-200 hover:cursor-pointer">
-                                                      <svg class="w-6 stroke-red-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
-                                                      <button class="font-semibold text-sm text-red-700">Delete</button>
-                                                    </div>
+                          @csrf
+                          @method('DELETE')
+                          
+                              
+                              <div class="flex gap-2 text-gray-600 hover:scale-110 duration-200 hover:cursor-pointer">
+                                <svg class="w-6 stroke-red-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
+                                <button class="font-semibold text-sm text-red-700">Delete</button>
+                              </div>                     
                                                
                             </form>
                           </div>

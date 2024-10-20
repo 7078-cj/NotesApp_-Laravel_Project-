@@ -5,7 +5,7 @@
             @include('components.leftMenu')    
         </div>
         
-        <div class="bg-gradient-to-b from-indigo-500 to-sky-300 w-screen p-5">
+        <div class="w-screen h-screen bg-gradient-to-b from-indigo-500 to-sky-300  p-5">
               <div class="flex flex-row gap-11 flex-wrap m-5">
                     
                     @foreach ($notes as $note )
