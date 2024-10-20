@@ -76,7 +76,7 @@
         Note Description: <p>{{$note->description}}</p>
         <br>
         created by: <p class="flex flex-row justify-center items-center gap-4">@if ($note->user->avatar)
-          <img src="{{ asset('storage/' .$note->user->avatar) }}" alt="" class="h-20 rounded-full p-4">
+          <img src="{{ asset('storage/' .$note->user->avatar) }}" alt="" class="h-10 w-10 rounded-full  ring-2 ring-gray-400 m-4">
           @else
           <svg xmlns="http://www.w3.org/2000/svg" 
           width="24" height="24" viewBox="0 0 24 24" 

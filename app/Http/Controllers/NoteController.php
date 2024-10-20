@@ -33,17 +33,19 @@ class NoteController extends Controller
         $user = auth()->user();
 
 
-        if($note->visibility == "private" && auth()->guard('web')->user()->name != $note->user->name){
+        if($note->visibility == "private" 
+        &&
+         auth()->guard('web')->user()->name != $note->user->name){
             return redirect()->back();
         }
         else{
-            if (auth()->guard('web')->check()) {
+            
                 
                 $body = $note->noteBodys()->orderBy('created_at','asc')->get();
                 return view('note', ['note' => $note,'bodies'=>$body,'user'=>$user]);
-            }
+            
 
-        return redirect('/');
+        
         }
             
     }
@@ -84,7 +86,7 @@ class NoteController extends Controller
     }
 
     public function userNotes(){
-        if (auth()->guard('web')->check()) {
+        
             $notes =[];
             $user = auth()->user();
             //    $posts = Post::all();
@@ -94,19 +96,15 @@ class NoteController extends Controller
                     }
             
                     return view('userNotes',['notes' => $notes]);
-        } else {
-            return redirect('/login-user'); // Otherwise, redirect to the login page
-        }
+        
     }
     public function communityNotes(){
-        if (auth()->guard('web')->check()) {
+        
             $user = auth()->user();
             $public_notes=Note::where('visibility','public')->get();
             
             
                     return view('communityNotes',['notes'=>$public_notes,'user'=>$user]);
-        } else {
-            return redirect('/login-user'); 
-        }
+       
     }
 }

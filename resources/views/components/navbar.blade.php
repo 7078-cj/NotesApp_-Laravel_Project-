@@ -19,9 +19,9 @@
                 </div>
               <div class="flex flex-row gap-5 items-center">
                 @if (Auth::user()->avatar)
-                    <img src="{{ asset('storage/' . Auth::user()->avatar) }}" alt="" class="h-20 rounded-full p-4">
+                    <img src="{{ asset('storage/' . Auth::user()->avatar) }}" alt="" class="h-20 w-20 rounded-full  ring-2 ring-gray-400 m-4">
                 @endif
-                <h3>Welcome!! {{ Auth::user()->name }} </h3>
+                <a href="/editUser/{{ Auth::user()->id }}"><h3>Welcome!! {{ Auth::user()->name }} </h3></a>
                 <form action="/logout" method="POST" class="">
                     @csrf
                     <button class=" bg-slate-200 border p-2 rounded-md mt-5 justify-center">logout</button>

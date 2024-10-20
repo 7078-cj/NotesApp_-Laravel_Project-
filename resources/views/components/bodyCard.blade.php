@@ -31,7 +31,7 @@
                 
                 
               </div>
-              @if ($user->name === $body->user->name)
+              @if ($user->name === $body->user->name || $user->name === $body->note->user->name )
                     <div >
                         
 

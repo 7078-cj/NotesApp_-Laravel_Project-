@@ -17,5 +17,9 @@ class Body extends Model
     public function user() {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    public function note() {
+        return $this->belongsTo(Note::class, 'note_id');
+    }
   
 }

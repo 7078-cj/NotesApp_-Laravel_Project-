@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\File;
 class BodyController extends Controller
 {
     public function createBody(Note $note,Request $request){
-        if (auth()->guard('web')->check()) {
+        
             $data = $request->validate(
                 [
                     'image' => ['nullable', 'file', 'mimes:jpg,png,pdf', 'max:2048'], // Each rule in a separate element
@@ -30,19 +30,19 @@ class BodyController extends Controller
                 $data['note_id'] = $note->id;
 
                 Body::create($data);
-        }
+        
        return redirect()->back()->with('message', 'Operation successful!');
         
     }
 
     public function getUpdateBody(Body $body,Request $request){
-        if (auth()->guard('web')->check()) {
+        
         return view('updateBody',['body'=>$body]);
-        }
-        return redirect('/');
+        
+        
     }
     public function UpdateBody(Body $body,Request $request){
-        if (auth()->guard('web')->check()) {
+        
             $data = $request->validate(
                 [
                     'image' => ['nullable', 'file', 'mimes:jpg,png,pdf', 'max:2048'], // Each rule in a separate element
@@ -65,12 +65,12 @@ class BodyController extends Controller
                 }
                 
                 $body->update($data);
-            }
+            
             return redirect("/note/$body->note_id" );
     }
 
     public function deleteBody(Body $body,Request $request){
-        if (auth()->guard('web')->check()) {
+        
             if (!is_null($body->image)){
                 $image = public_path('storage/'.$body->image);
                 if (File::exists($image)){
@@ -78,7 +78,6 @@ class BodyController extends Controller
                 }
             }
             $body->delete();
-        }
-        return  redirect()->back();
+        
     }
 }

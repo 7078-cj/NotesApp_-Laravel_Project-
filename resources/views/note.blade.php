@@ -2,10 +2,10 @@
 @include('components.navbar')
     
     <div
-    class="max-w-screen p-4 overflow-hidden f bg-white border border-gray-200 rounded-xl shadow-md"
+    class="max-w-screen p-4 overflow-hidden  bg-white border border-gray-200 rounded-xl shadow-md"
     >
         
-        <div class="p-6 relative z-10  flex-1 flex-col items-center justify-center">
+        <div class="p-6 z-10  flex-1 flex-row items-center justify-center">
             <div class="flex flex-col items-center">
                 <p class="text-xl font-semibold text-gray-800">{{$note->title}}</p>
             <p class="mt-2 text-gray-600">
@@ -13,12 +13,15 @@
             </p>
             </div>
             
-            <div class="flex flex-col gap-3 items-center mt-4 text-gray-600">
-                <h3>Notes Creator: {{$note->user->name}}</h3>
+            <div class="flex flex-row gap-3 items-center justify-center text-center mt-4 text-gray-600">
+                <h3 class="flex flex-row items-center justify-center text-center">Notes Creator: @if ($note->user->avatar)
+                    <img src="{{ asset('storage/' . $note->user->avatar) }}" alt="" class="h-40 w-40 rounded-full p-4">
+                @endif{{$note->user->name}}</h3>
+                |
                 <h3> email:{{$note->user->email}}</h3>
             </div>
         </div>
-    </div>
+
 
         
         <div class=" mb-40 h-65 p-20 overflow-scroll flex-1 flex flex-row gap-4 bg-gradient-to-b from-cyan-100 to-indigo-300 flex-wrap">
