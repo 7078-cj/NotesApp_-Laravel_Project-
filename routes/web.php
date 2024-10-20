@@ -11,9 +11,6 @@ Route::middleware('authenticated')->group(function (){
     Route::get('/login-user', function () {
     return view('Login');
     });
-    Route::get('/register-user', function () {
-        return view('Register');
-        });
 
     Route::post('/register',[UserController::class,"register"]);
     
@@ -39,5 +36,9 @@ Route::middleware('can-view-notes')->group(function (){
     Route::get('update-body/{body}',[BodyController::class,'getUpdateBody']);
     Route::put('updates-body/{body}',[BodyController::class,'UpdateBody']);
     Route::delete('delete-body/{body}',[BodyController::class,'deleteBody']);
+
+    //user
+    Route::get('/editUser/{user}',[UserController::class,'editUser']);
+    Route::put('/updateUser/{user}',[UserController::class,'updateUser']);
 
 });

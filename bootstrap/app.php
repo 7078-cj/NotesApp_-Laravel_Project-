@@ -15,8 +15,7 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
             'can-view-notes'=>CanViewNotes::class,
-            'authenticated'=>Authenticated::class]);
-        
+            'authenticated'=>Authenticated::class]);  
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

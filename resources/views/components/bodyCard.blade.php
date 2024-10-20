@@ -22,7 +22,11 @@
         {{-- footer --}}
         <div class="">
             <div class="flex flex-row flex-wrap justify-center gap-20 mt-2 line-clamp-3 text-sm/relaxed text-gray-500 ">
-                <h4>Sent By:{{ $body->user->name }}</h4>
+                <h4 class="flex flex-row gap-5 items-center">Sent By:
+                  @if ($user->avatar)
+                    <img src="{{ asset('storage/' .$body->user->avatar) }}" alt="" class="h-20 rounded-full p-4">
+                @endif
+                {{ $body->user->name }}</h4>
                 <h5 class="line-clamp-3">email:{{ $body->user->email }}</h5>
                 
                 

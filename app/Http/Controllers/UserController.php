@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\File;
 
 class UserController extends Controller
 {
@@ -41,4 +42,58 @@ class UserController extends Controller
 
         return redirect('/');
     }
+
+    public function editUser(User $user,Request $request){
+        return view('edit-user',['user'=>$user]);
+    }
+
+    public function updateUser(User $user,Request $request){
+        $update = $request->validate([
+            'name'=>['required','min:3','max:50'],
+            'email'=>['required','email'],
+            'avatar' => ['nullable', 'file', 'image', 'mimes:jpg,png,jpeg', 'max:2048'],
+            'password'=>['nullable','min:8','max:200']
+        ]);
+
+        if ($request->hasFile('avatar')) {
+            $avatar = public_path('storage/' . $user->avatar);
+            
+            // Check if the avatar exists and delete it
+            if ($user->avatar && File::exists($avatar)) {
+                unlink($avatar);
+            }
+    
+            $file = $request->file('avatar');
+            $filePath = $file->store('uploads/avatar', 'public'); // Store in 'public/uploads'
+            $update['avatar'] = $filePath; // Save new avatar path
+        }
+
+        if (empty($update['password'])) {
+            $update['password'] = $user->password; // Keep existing password
+        } else {
+            $update['password'] = bcrypt($update['password']); // Encrypt new password
+        }
+
+
+        
+        
+        $user->update($update);
+        
+        
+        return redirect('/');
+    }
+
+    public function deleteUser(User $user,Request $request){
+        if (auth()->guard('web')->check()) {
+            if (!is_null($user->avatar)){
+                $avatar = public_path('storage/'.$user->avatar);
+                if (File::exists($avatar)){
+                    unlink($avatar);
+                }
+            }
+            $user->delete();
+        }
+        return  redirect()->back();
+    }
+    
 }

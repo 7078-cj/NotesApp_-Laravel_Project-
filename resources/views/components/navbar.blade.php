@@ -18,6 +18,9 @@
                     </div>
                 </div>
               <div class="flex flex-row gap-5 items-center">
+                @if (Auth::user()->avatar)
+                    <img src="{{ asset('storage/' . Auth::user()->avatar) }}" alt="" class="h-20 rounded-full p-4">
+                @endif
                 <h3>Welcome!! {{ Auth::user()->name }} </h3>
                 <form action="/logout" method="POST" class="">
                     @csrf

@@ -1,26 +1,27 @@
 @extends('index')
 @include('components.navbar')
-    <div
-  class="max-w-screen p-4 overflow-hidden f bg-white border border-gray-200 rounded-xl shadow-md"
->
-  
-  <div class="p-6 relative z-10  flex-1 flex-col items-center justify-center">
-    <div class="flex flex-col items-center">
-        <p class="text-xl font-semibold text-gray-800">{{$note->title}}</p>
-    <p class="mt-2 text-gray-600">
-        {{$note->description}}
-    </p>
-    </div>
     
-    <div class="flex flex-col gap-3 items-center mt-4 text-gray-600">
-        <h3>Notes Creator: {{$note->user->name}}</h3>
-        <h3> email:{{$note->user->email}}</h3>
+    <div
+    class="max-w-screen p-4 overflow-hidden f bg-white border border-gray-200 rounded-xl shadow-md"
+    >
+        
+        <div class="p-6 relative z-10  flex-1 flex-col items-center justify-center">
+            <div class="flex flex-col items-center">
+                <p class="text-xl font-semibold text-gray-800">{{$note->title}}</p>
+            <p class="mt-2 text-gray-600">
+                {{$note->description}}
+            </p>
+            </div>
+            
+            <div class="flex flex-col gap-3 items-center mt-4 text-gray-600">
+                <h3>Notes Creator: {{$note->user->name}}</h3>
+                <h3> email:{{$note->user->email}}</h3>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
 
-
-<div class=" h-100 p-20 overflow-scroll flex-1 flex flex-row gap-4 bg-gradient-to-b from-cyan-100 to-indigo-300 flex-wrap">
+        
+        <div class=" mb-40 h-65 p-20 overflow-scroll flex-1 flex flex-row gap-4 bg-gradient-to-b from-cyan-100 to-indigo-300 flex-wrap">
        
        
             
@@ -28,12 +29,13 @@
             @foreach ($bodies as $body )
              @include('components.bodyCard')
             @endforeach
-        @endif
+            @endif
         </div>
        
     
-    <div class="sticky z-10">
-        <form action="/create-body/{{ $note->id }}" method="POST" enctype="multipart/form-data" class=" bottom-0 left-0 p-4 w-screen">
+    <div class="">
+        <form action="/create-body/{{ $note->id }}" method="POST" enctype="multipart/form-data" 
+            class=" bottom-0 left-0 p-4 w-screen h-40 fixed">
             @csrf
            
             <div class="w-full mb-4 border border-gray-200 rounded-lg bg-gray-50 dark:bg-slate-400 dark:border-slate-400">
@@ -54,9 +56,9 @@
                         Post Note Body
                     </button>
                     </div>
-                </div>
+            </div>
             
         </form>
     </div>
-</div>
+
     
