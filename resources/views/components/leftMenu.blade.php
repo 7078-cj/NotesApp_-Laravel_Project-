@@ -44,7 +44,7 @@
 
       </aside> --}}
 
-      <div class="flex flex-col items-center justify-center h-screen light p-5">
+      <div class="flex flex-col items-center justify-center max-h-full p-5 ">
         <div class="w-full max-w-md bg-white rounded-lg shadow-md p-6">
           <h2 class="text-2xl font-bold text-gray-800 mb-4">Create New Note:</h2>
       

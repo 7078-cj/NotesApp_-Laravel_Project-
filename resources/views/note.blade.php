@@ -23,22 +23,22 @@
         </div>
 
 
-        
-        <div class=" mb-40 h-65 p-20 overflow-scroll flex-1 flex flex-row gap-4 bg-gradient-to-b from-cyan-100 to-indigo-300 flex-wrap">
+         
+        <div class="flex-1 flex flex-row  gap-4 bg-gradient-to-b from-cyan-100 to-indigo-300 flex-wrap w-full items-center justify-center">
        
        
             
-            @if ($bodies)
+           
             @foreach ($bodies as $body )
              @include('components.bodyCard')
             @endforeach
-            @endif
+            
         </div>
-       
+           
     
-    <div class="">
+    <div class=" flex items-center justify-center">
         <form action="/create-body/{{ $note->id }}" method="POST" enctype="multipart/form-data" 
-            class=" bottom-0 left-0 p-4 w-screen h-40 fixed">
+            class=" bottom-0 left-0 p-10 w-screen h-40 ">
             @csrf
            
             <div class="w-full mb-4 border border-gray-200 rounded-lg bg-gray-50 dark:bg-slate-400 dark:border-slate-400">

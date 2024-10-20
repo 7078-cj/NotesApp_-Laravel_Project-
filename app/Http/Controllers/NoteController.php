@@ -31,8 +31,7 @@ class NoteController extends Controller
 
     public function getNote(Note $note,Request $request){
         $user = auth()->user();
-        $latest = $note->noteBodys()->first()->get();
-
+        
 
         if($note->visibility == "private" 
         &&
@@ -43,7 +42,7 @@ class NoteController extends Controller
             
                 
                 $body = $note->noteBodys()->orderBy('created_at','asc')->get();
-                return view('note', ['note' => $note,'bodies'=>$body,'user'=>$user,'latest'=>$latest]);
+                return view('note', ['note' => $note,'bodies'=>$body,'user'=>$user,]);
             
 
         
@@ -103,6 +102,8 @@ class NoteController extends Controller
         
             $user = auth()->user();
             $public_notes=Note::where('visibility','public')->get();
+            
+
             
             
                     return view('communityNotes',['notes'=>$public_notes,'user'=>$user]);
