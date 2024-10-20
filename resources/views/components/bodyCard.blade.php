@@ -12,7 +12,7 @@
                 alt=""
                 src="{{ asset('storage/' . $body->image) }}"
                 class="  {{$body->image ?
-                    'w-full h-70  rounded-lg mb-4':"hidden"}}">  
+                    'w-full h-80  rounded-lg mb-4':"hidden"}}">  
                 </div>
             
             {{-- @endif --}}
@@ -21,9 +21,9 @@
         </div>
         {{-- footer --}}
         <div class="">
-            <div class="flex flex-row justify-center gap-20 mt-2 line-clamp-3 text-sm/relaxed text-gray-500 ">
+            <div class="flex flex-row flex-wrap justify-center gap-20 mt-2 line-clamp-3 text-sm/relaxed text-gray-500 ">
                 <h4>Sent By:{{ $body->user->name }}</h4>
-                <h5>email:{{ $body->user->email }}</h5>
+                <h5 class="line-clamp-3">email:{{ $body->user->email }}</h5>
                 
                 
               </div>

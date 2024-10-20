@@ -1,6 +1,6 @@
 @extends('index')
 
-    <nav class=" flex flex-row gap-2 justify-between mx-10 items-center">
+    <nav class=" flex flex-row gap-2 justify-between mx-10 items-center  ">
                 <h1>
                     <a class="home" href="/">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">

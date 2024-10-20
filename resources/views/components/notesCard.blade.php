@@ -34,11 +34,11 @@
 >
 @if ($user->name === $note->user->name)
   <div
-    class="absolute duration-700 shadow-md group-hover:-translate-y-4 group-hover:-translate-x-4 -bottom-10 -right-10 w-1/2 h-1/2 rounded-lg bg-slate-200"
+    class="absolute duration-700 shadow-md group-hover:-translate-y-4 group-hover:-translate-x-4 -bottom-10 -right-10 w-1/2 h-1/2 rounded-lg bg-gradient-to-t from-sky-200 to-slate-50"
     alt="image here"
   >
   
-  <div class="flex flex-col justify-center gap-2 items-center py-3">
+  <div class="flex flex-col justify-center gap-2 items-center py-3 ">
 
     <p><a href="/edit-note/{{$note->id}}" class="EditBtn">
         <div class="flex gap-2 text-slate-600 hover:scale-110 duration-200 hover:cursor-pointer">

@@ -1,13 +1,25 @@
 @extends('index')
 @include('components.navbar')
-    <div style="background-color:rgb(219, 219, 219); padding: 10px; margin: 10px;">
-        <h3>Title:{{$note->title}} </h3>
+    <div
+  class="max-w-screen p-4 overflow-hidden f bg-white border border-gray-200 rounded-xl shadow-md"
+>
+  
+  <div class="p-6 relative z-10  flex-1 flex-col items-center justify-center">
+    <div class="flex flex-col items-center">
+        <p class="text-xl font-semibold text-gray-800">{{$note->title}}</p>
+    <p class="mt-2 text-gray-600">
+        {{$note->description}}
+    </p>
+    </div>
+    
+    <div class="flex flex-col gap-3 items-center mt-4 text-gray-600">
         <h3>Notes Creator: {{$note->user->name}}</h3>
         <h3> email:{{$note->user->email}}</h3>
-        <h2>Description:{{$note->description}}</h2>
-        <h1>{{$note->body}}</h1>
-        
     </div>
+  </div>
+</div>
+
+
 <div class=" h-100 p-20 overflow-scroll flex-1 flex flex-row gap-4 bg-gradient-to-b from-cyan-100 to-indigo-300 flex-wrap">
        
        
