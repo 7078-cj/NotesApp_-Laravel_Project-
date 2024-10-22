@@ -1,12 +1,15 @@
 @extends('index')
-    @include('components.navbar')
-<div class="flex flex-row gap-3 ">
-        <div class="sm:hidden  md:block lg:block ">
+<div class="flex flex-col flex-1 max-w-screem max-h-full">
+
+
+@include('components.navbar')   
+<div class="flex flex-row flex-1 gap-3 max-h-full bg-gradient-to-b from-indigo-500 to-sky-300">
+        <div class="hidden  md:inline-block lg:inline-block xl:inline-block ">
             @include('components.leftMenu')    
         </div>
         
-        <div class="bg-gradient-to-b from-indigo-500 to-sky-300 w-full p-10">
-              <div class="flex flex-row gap-11 flex-wrap items-center justify-center  ">
+        <div class="min-h-screen pt-4">
+              <div class="flex flex-row flex-1 gap-11 flex-wrap items-center justify-center  ">
                     
                     @foreach ($notes as $note )
                     
@@ -14,9 +17,27 @@
                     @endforeach
                 </div>
         </div>
+        <div class="flex flex-col fixed items-start justify-end align-top gap-10  bottom-10 -right z-10 mb-12">
+          <div class="block h-20 w-30 p-5 m-10 md:hidden lg:hidden xl:hidden ">
+            <form class="flex flex-col bg-slate-200 p-5 mb-4 rounded-md" action="/create-note" method="POST">
+              @csrf
+              <input  name="title" placeholder="Title" class="bg-gray-100 text-gray-800 border-0 rounded-md p-2 mb-4 focus:bg-gray-200 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150" type="text">
+              
+              <select name="visibility" class="bg-gray-100 text-gray-800 border-0 rounded-md p-2 mb-4 focus:bg-gray-200 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150" id="product">
+                <option value="public">Public</option>
+                    <option value="private">Private</option>
+              </select>
+              
+              <textarea placeholder="Desctiption" class="bg-gray-100 text-gray-800 border-0 rounded-md p-2 mb-4 focus:bg-gray-200 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150" name="description"></textarea>
+        
+              <button class="bg-gradient-to-r from-indigo-500 to-blue-500 text-white font-bold py-2 px-4 rounded-md mt-4 hover:bg-indigo-600 hover:to-blue-600 transition ease-in-out duration-150" type="submit">Submit</button>
+            </form>
+          </div>
 
-        <div class="sm:block fixed bottom-0 -right-1 z-10 m-10 bg-slate-200 p-15 rounded-full
+          <div class="sm:block bg-slate-200 p-15 rounded-full
         md:hidden lg:hidden">
+
+          
             <button
             title="Add New"
             class="group cursor-pointer outline-none hover:rotate-90 duration-300"
@@ -37,6 +58,9 @@
             </svg>
           </button>
         </div>
+
+        </div>
+        
         
               
                     
@@ -44,6 +68,7 @@
         
     
         
+</div>
 </div>
 
 

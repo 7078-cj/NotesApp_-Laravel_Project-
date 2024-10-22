@@ -21,7 +21,7 @@
     </div>
 
     <div class="p-6 space-y-6">
-        <form action="/edit-note/{{$note->id}}" method="POST">
+        <form action="/edit-note/{{$note->id}}" method="POST" enctype="multipart/form-data">
           @csrf
           @method('PUT')
             <div class="grid grid-cols-6 gap-6">
@@ -36,6 +36,7 @@
                       <option value="private">Private</option>
                   </select>
                 </div>
+                <input id="picture" type="file"  name="cover" class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium">
                 
                 <div class="col-span-full">
                     <label for="description" class="text-sm font-medium text-gray-900 block mb-2">description</label>

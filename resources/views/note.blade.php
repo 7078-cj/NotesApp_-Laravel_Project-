@@ -2,7 +2,7 @@
 @include('components.navbar')
     
     <div
-    class="max-w-screen p-4 overflow-hidden  bg-white border border-gray-200 rounded-xl shadow-md"
+    class="max-w-screen bg-white border border-gray-200"
     >
         
         <div class="p-6 z-10  flex-1 flex-row items-center justify-center">
@@ -24,7 +24,7 @@
 
 
          
-        <div class="flex-1 flex flex-row  gap-4 bg-gradient-to-b from-cyan-100 to-indigo-300 flex-wrap w-full items-center justify-center">
+        <div class=" flex flex-row flex-1 gap-4 bg-gradient-to-b from-cyan-100 to-indigo-300 flex-wrap items-center justify-center">
        
        
             
@@ -36,7 +36,7 @@
         </div>
            
     
-    <div class=" flex items-center justify-center">
+    <div class=" flex flex-col flex-1 items-center justify-center">
         <form action="/create-body/{{ $note->id }}" method="POST" enctype="multipart/form-data" 
             class=" bottom-0 left-0 p-10 w-screen h-40 ">
             @csrf
@@ -48,10 +48,15 @@
                 </div>
                 <div class="flex items-center justify-center gap-60 px-3 py-2 border-t bg-gradient-to-r from-indigo-200 to-blue-100">
                 
-                    <div class="grid w-full max-w-xs items-center gap-1.5">
-                        <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
-                            <path d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z"/>
-                        </svg>
+                    <div class=" flex flex-col items-center gap-1.5">
+                        <div class="flex flex-row gap-2 justify-center items-center">
+                            <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
+                                <path d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z"/>
+                            </svg>
+                            /
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M18 7c0-1.103-.897-2-2-2H4c-1.103 0-2 .897-2 2v10c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-3.333L22 17V7l-4 3.333V7zm-1.998 10H4V7h12l.001 4.999L16 12l.001.001.001 4.999z"></path></svg>
+                            <h1>| up to 45MB</h1>
+                    </div>
                         
                         <input id="picture" type="file"  name="image" class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium">
                     </div>
@@ -62,6 +67,7 @@
             </div>
             
         </form>
+    </div>
     </div>
 
     

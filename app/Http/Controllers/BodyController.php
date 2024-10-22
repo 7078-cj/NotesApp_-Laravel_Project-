@@ -13,7 +13,7 @@ class BodyController extends Controller
         
             $data = $request->validate(
                 [
-                    'image' => ['nullable', 'file', 'mimes:jpg,png,pdf', 'max:2048'], // Each rule in a separate element
+                    'image' => ['nullable', 'file', 'mimes:jpg,png,pdf,gif,mp4,avi,mov', 'max:51200'], // Each rule in a separate element
                     'message' => ['nullable', 'string'],
                 ]
                 );
@@ -45,7 +45,7 @@ class BodyController extends Controller
         
             $data = $request->validate(
                 [
-                    'image' => ['nullable', 'file', 'mimes:jpg,png,pdf', 'max:2048'], // Each rule in a separate element
+                    'image' => ['nullable', 'file', 'mimes:jpg,png,pdf,gif,mp4,avi,mov', 'max:51200'], // Each rule in a separate element
                     'message' => ['nullable', 'string'],
                 ]
                 );

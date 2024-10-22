@@ -5,17 +5,25 @@ namespace App\Http\Controllers;
 use App\Models\Body;
 use App\Models\Note;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class NoteController extends Controller
 {
     public function createNote(Request $request){
         $note = $request->validate([
-            'title'=>'required',
-            'description'=>'required',
-            'visibility'=>'required'
+            'title'=>['required','string'],
+            'description'=>['required','string'],
+            'visibility'=>['required','string'],
+            'cover' => ['nullable', 'file', 'mimes:jpg,png,pdf,gif', 'max:51200'],
             
 
         ]);
+
+        if ($request->hasFile('cover')) {
+            $file = $request->file('cover');
+            $filePath = $file->store('uploads/cover', 'public'); // Store in 'public/uploads'
+            $note['cover'] = $filePath; // Save file path in database
+        }
 
         $note['title']=strip_tags($note['title']);
         $note['description']=strip_tags($note['description']);
@@ -60,6 +68,12 @@ class NoteController extends Controller
 
     public function deleteNote(Note $note) {
         if (auth()->guard('web')->user()->id === $note['user_id']) {
+            if (!is_null($note->cover)){
+                $image = public_path('storage/'.$note->cover);
+                if (File::exists($image)){
+                    unlink($image);
+                }
+            }
             $note->delete();
         }
         return redirect('/');
@@ -69,18 +83,33 @@ class NoteController extends Controller
         if (auth()->guard('web')->user()->id !== $note['user_id']) {
             return redirect('/');
         }
-
+        
         $incomingFields = $request->validate([
             'title' => 'required',
-            'description'=>'required',
-            'visibility'=>'required'
-            
+            'description' => 'required',
+            'visibility' => 'required',
+            'cover' => ['nullable', 'file', 'mimes:jpg,png,pdf,gif', 'max:51200'],
         ]);
-
+        
+        if ($request->hasFile('cover')) {
+            
+            $file = $request->file('cover');
+            $filePath = $file->store('uploads/cover', 'public'); 
+            $incomingFields['cover'] = $filePath; 
+        
+            
+            $oldCover = public_path('storage/' . $note->cover);
+            if (File::exists($oldCover)) {
+                unlink($oldCover);
+            }
+        } else {
+            
+            $incomingFields['cover'] = $note->cover;
+        }
+        
         $incomingFields['title'] = strip_tags($incomingFields['title']);
-        $note['description']=strip_tags($note['description']);
-       
-
+        $incomingFields['description'] = strip_tags($incomingFields['description']);
+        
         $note->update($incomingFields);
         return redirect('/');
     }
@@ -106,7 +135,7 @@ class NoteController extends Controller
 
             
             
-                    return view('communityNotes',['notes'=>$public_notes,'user'=>$user]);
+                    return view('Home',['notes'=>$public_notes,'user'=>$user]);
        
     }
 }

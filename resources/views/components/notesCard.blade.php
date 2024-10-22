@@ -1,36 +1,126 @@
-{{-- <div class="note-card">
-    <div class="header">
-        <h2 class="visibility">{{ $note->visibility }}</h2>
-        <div class="btns">
-            <p><a href="/edit-note/{{$note->id}}" class="EditBtn">Edit</a></p>
-                    <form action="/delete-note/{{$note->id}}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button class="DeleteBtn">Delete</button>
-                    </form>
-        </div>
-    </div>
-    <div class="content">
-        Title:{{$note->title}} 
-        <h2 class="description">description:{{$note->description}}</h2>
-    </a>
-       
-    </div>
-    <hr>
-   
 
-    <div class="footer">
-        <h6> created by {{$note->user->name}} </h6>
-        <h6>email:{{$note->user->email}}</h6>
-        <p class="date">Created At:  {{ $note->created_at }}</p>
-    </div>
+
+
+
+<div class="w-80 p-4 bg-white rounded-lg shadow-md transform hover:scale-105 transition-transform duration-300 ease-in-out">
+  @if ($note->cover)
+  <img class="w-full h-40 object-cover rounded-t-lg" alt="Card Image" src="{{ asset('storage/' .$note->cover) }}">
+  @endif
+  <div class="p-4">
+      <h2 class="text-xl  font-semibold"><a href="/note/{{ $note->id }}" class="EditBtn">
+              {{$note->title}}
+            </a></h2>
+
+      <p class="text-gray-600">{{$note->description}}</p>
+      <div class="flex items-center py-5">
+        @if ($note->user->avatar)
+          <img src="{{ asset('storage/' .$note->user->avatar) }}" alt="Avatar" class="w-8 h-8 rounded-full mr-2 object-cover">
+        @endif
+          <span class="text-gray-800 font-semibold">{{$note->user->name}}</span>
+      </div>
+      <div class="flex justify-between items-center mt-4">
+        <div
+        class=" {{$note->visibility=="public" ? "bg-blue-200":"bg-red-200" }} text-gray-800 mt-6 rounded p-2 px-6"
+      >
+      {{ $note->visibility }}
+      
+      
+      </div>
+      
+      @if ($user->name === $note->user->name)
+        <div class="flex flex-row justify-center gap-2 items-center py-3 ">
+
+          <p><a href="/edit-note/{{$note->id}}" class="EditBtn">
+              <div class="flex gap-2 text-slate-600 hover:scale-110 duration-200 hover:cursor-pointer">
+              <svg class="w-6 stroke-green-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+              </svg>
+              <button class="font-semibold text-sm text-green-700">Edit</button>
+          </div>
+          </a></p>
+          <form action="/delete-note/{{$note->id}}" method="POST">
+            @csrf
+            @method('DELETE')
+            
+                
+                <div class="flex gap-2 text-gray-600 hover:scale-110 duration-200 hover:cursor-pointer">
+                  <svg class="w-6 stroke-red-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
+                  <button class="font-semibold text-sm text-red-700">Delete</button>
+                </div>
+          
+        </form>
+                          
+        </div>
+      @endif       
+
+      </div>
+  </div>
+</div>
+{{-- <div class="flex flex-col justify-center items-center bg-gray-100 rounded-md">
+  <div class="bg-white rounded-lg shadow-lg overflow-hidden max-w-lg w-full">
+    
+      <img src="{{ asset('storage/' .$note->cover) }}" alt="Mountain" class="w-full h-64 object-cover">
+      
+      <div class="p-6">
+          <h2 class="text-2xl font-bold text-gray-800 mb-2">
+            
+            </h2>
+          <p class="text-gray-700 leading-tight mb-4">
+            
+          </p>
+          <div class="flex flex-col justify-between items-center">
+              <div class="flex items-center">
+                @if ($note->user->avatar)
+                  <img src="{{ asset('storage/' .$note->user->avatar) }}" alt="Avatar" class="w-8 h-8 rounded-full mr-2 object-cover">
+                @endif
+                  <span class="text-gray-800 font-semibold">{{$note->user->name}}</span>
+              </div>
+              <div class="flex flex-row gap-6 justify-center items-center">
+                <span class="text-gray-600">{{ $note->created_at }}</span>
+              <div
+                  class=" {{$note->visibility=="public" ? "bg-blue-200":"bg-red-200" }} text-gray-800 mt-6 rounded p-2 px-6"
+                >
+                {{ $note->visibility }}
+                
+                </div>
+                
+              </div>
+              @if ($user->name === $note->user->name)
+                <div class="flex flex-row justify-center gap-2 items-center py-3 ">
+
+                  <p><a href="/edit-note/{{$note->id}}" class="EditBtn">
+                      <div class="flex gap-2 text-slate-600 hover:scale-110 duration-200 hover:cursor-pointer">
+                      <svg class="w-6 stroke-green-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                      </svg>
+                      <button class="font-semibold text-sm text-green-700">Edit</button>
+                  </div>
+                  </a></p>
+                  <form action="/delete-note/{{$note->id}}" method="POST">
+                    @csrf
+                    @method('DELETE')
                     
-                    
+                        
+                        <div class="flex gap-2 text-gray-600 hover:scale-110 duration-200 hover:cursor-pointer">
+                          <svg class="w-6 stroke-red-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
+                          <button class="font-semibold text-sm text-red-700">Delete</button>
+                        </div>
+                   
+                </form>
+                                  
+                </div>
+                @endif
+              
+          </div>
+      </div>
+  </div>
 </div> --}}
 
 
-<div
-  class="group flex flex-col justify-start items-start gap-2 w-96 h-65 duration-500 relative rounded-lg p-4 bg-slate-100 hover:-translate-y-2 hover:shadow-xl shadow-gray-300"
+{{-- <div
+  class="group relative flex flex-col justify-start items-start gap-2 w-96 h-65 min-h-52 min-w-52 duration-500 rounded-lg p-5 bg-slate-100 hover:-translate-y-2 hover:shadow-xl shadow-gray-300 "
 >
 @if ($user->name === $note->user->name)
   <div
@@ -103,7 +193,7 @@
   
   
   
-</div>
+</div> --}}
 
     {{-- <div class="note-card">
         <div class="header">

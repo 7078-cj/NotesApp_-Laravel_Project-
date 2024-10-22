@@ -51,7 +51,7 @@ class UserController extends Controller
         $update = $request->validate([
             'name'=>['required','min:3','max:50'],
             'email'=>['required','email'],
-            'avatar' => ['nullable', 'file', 'image', 'mimes:jpg,png,jpeg', 'max:2048'],
+            'avatar' => ['nullable', 'file', 'mimes:jpg,png,pdf,gif', 'max:20480'],
             'password'=>['nullable','min:8','max:200']
         ]);
 

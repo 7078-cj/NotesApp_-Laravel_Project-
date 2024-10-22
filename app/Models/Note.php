@@ -13,6 +13,7 @@ class Note extends Model
         'description',
         'visibility',
         'user_id',
+        'cover'
     ];
     
     public function user() {

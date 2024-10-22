@@ -7,16 +7,33 @@
       
         <div class="mt-0.5 text-lg text-gray-900  gap-3 m-5 flex flex-col"> 
             @if ($body->image)
-                <div>
+                {{-- <div>
                 <img
                 alt=""
                 src="{{ asset('storage/' . $body->image) }}"
                 class="  {{$body->image ?
                     'w-full h-80  rounded-lg mb-4':"hidden"}}">  
-                </div>
+                </div> --}}
+                @php
+                $fileExtension = pathinfo($body->image, PATHINFO_EXTENSION);
+                @endphp
+            
+    
+            {{-- Check if the uploaded file is a video --}}
+            @if(in_array($fileExtension, ['mp4', 'avi', 'mov']))
+                <video width="600" controls class="{{$body->image ?
+                    'w-full h-80  rounded-lg mb-4':"hidden"}}">
+                    <source src="{{ asset('storage/' . $body->image) }}" type="video/{{ $fileExtension }}">
+                    Your browser does not support the video tag.
+                </video>
+            @else
+                {{-- If it's not a video, display it as an image --}}
+                <img src="{{ asset('storage/' . $body->image) }}" alt="Uploaded Image" width="300" class="{{$body->image ?
+                    'w-full h-80  rounded-lg mb-4':"hidden"}}">
+            @endif
             
             @endif
-            <p class=" text-gray-600 mb-2 break-words text-center">{{ $body->message }}</p>
+            <p class=" text-gray-600 m-5 break-words text-center">{{ $body->message }} </p>
         
         </div>
         {{-- footer --}}

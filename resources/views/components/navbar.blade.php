@@ -1,6 +1,6 @@
 @extends('index')
 
-    <nav class=" flex flex-row gap-2 justify-between mx-10 items-center  ">
+    <nav class=" flex flex-row flex-wrap gap-2 justify-around p-4 items-center z-10  bg-slate-50 flex-1 max-w-screen ">
                 <h1>
                     <a class="home" href="/">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
@@ -14,18 +14,18 @@
                         <p><a href="/" class="">{{ Auth::user()->name }}'s Notes</a></p>
                     </div>
                     <div class = "headTags community">
-                        <p><a href="/communityNotes">Community</a></p>
+                        <p><a href="/communityNotes" class="text-md">Community</a></p>
                     </div>
                 </div>
               <div class="flex flex-row gap-5 items-center">
-                @if (Auth::user()->avatar)
-                    <img src="{{ asset('storage/' . Auth::user()->avatar) }}" alt="" class="h-20 w-20 rounded-full  ring-2 ring-gray-400 m-4">
-                @endif
-                <a href="/editUser/{{ Auth::user()->id }}"><h3>Welcome!! {{ Auth::user()->name }} </h3></a>
-                <form action="/logout" method="POST" class="">
-                    @csrf
-                    <button class=" bg-slate-200 border p-2 rounded-md mt-5 justify-center">logout</button>
-                </form>
+                    @if (Auth::user()->avatar)
+                        <img src="{{ asset('storage/' . Auth::user()->avatar) }}" alt="" class="h-20 w-20 rounded-full  ring-2 ring-gray-400 m-4">
+                    @endif
+                    <a href="/editUser/{{ Auth::user()->id }}"><h3>Welcome!! {{ Auth::user()->name }} </h3></a>
+                    <form action="/logout" method="POST" class="">
+                        @csrf
+                        <button class=" bg-slate-200 border p-2 rounded-md mt-5 justify-center">logout</button>
+                    </form>
               </div>
     </nav>
 
