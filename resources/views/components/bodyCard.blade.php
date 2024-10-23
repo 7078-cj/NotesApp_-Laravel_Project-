@@ -1,4 +1,4 @@
-<article class="max-w-[500px] overflow-hidden  transition hover:scale-105  rounded-lg m-10 ">
+<article class="max-w-[500px] overflow-hidden  transition hover:scale-105  rounded-lg m-10 animate-slide-in-bottom ">
                
               
     <div class="bg-white p-4 sm:p-6 ">

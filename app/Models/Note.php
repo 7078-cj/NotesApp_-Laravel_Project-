@@ -19,8 +19,10 @@ class Note extends Model
     public function user() {
         return $this->belongsTo(User::class, 'user_id');
     }
-    public function noteBodys(){
+    public function body(){
         
         return $this->hasMany(Body::class,'note_id');
     }
+
+    
 }

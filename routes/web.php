@@ -23,6 +23,7 @@ Route::post('/logout',[UserController::class,'logout']);
 Route::middleware('can-view-notes')->group(function (){
 
     Route::get('/',[HomeController::class,"home"]);
+    Route::get('/create',[NoteController::class,"showCreateNote"]);
     Route::post('/create-note',[NoteController::class,'createNote']);
     Route::get('/note/{note}',[NoteController::class,'getNote']);
     Route::get('/edit-note/{note}',[NoteController::class,'getEditNote']);

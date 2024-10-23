@@ -12,9 +12,10 @@ class NoteController extends Controller
     public function createNote(Request $request){
         $note = $request->validate([
             'title'=>['required','string'],
-            'description'=>['required','string'],
+            'description'=>['required','string',"max:100"],
             'visibility'=>['required','string'],
             'cover' => ['nullable', 'file', 'mimes:jpg,png,pdf,gif', 'max:51200'],
+            'message' => ['nullable', 'string','max:10000'],
             
 
         ]);
@@ -30,11 +31,25 @@ class NoteController extends Controller
        
         $note['user_id'] = auth()->guard('web')->id();
 
-        Note::create($note);
+        $createdNote = Note::create($note);
 
-        return redirect('/');
+        if($note['message']){
+            $data['user_id'] = auth()->guard('web')->id();
+            $data['note_id'] = $createdNote->id;
+            $data['message'] = $note['message'];
+    
+    
+            Body::create($data);
+        }
         
 
+        return redirect("/note/$createdNote->id");
+        
+
+    }
+
+    public function showCreateNote(){
+        return view("create-Note");
     }
 
     public function getNote(Note $note,Request $request){
@@ -49,7 +64,7 @@ class NoteController extends Controller
         else{
             
                 
-                $body = $note->noteBodys()->orderBy('created_at','asc')->get();
+                $body = $note->body()->orderBy('created_at','asc')->get();
                 return view('note', ['note' => $note,'bodies'=>$body,'user'=>$user,]);
             
 
@@ -66,6 +81,12 @@ class NoteController extends Controller
         return view('edit-note', ['note' => $note]);
     }
 
+    public function showDeleteNote(Note $note){
+        if (auth()->guard('web')->user()->id !== $note['user_id']) {
+            return redirect('/');
+        }
+        return view('delete-Note',['note' => $note]);
+    }
     public function deleteNote(Note $note) {
         if (auth()->guard('web')->user()->id === $note['user_id']) {
             if (!is_null($note->cover)){
@@ -74,6 +95,9 @@ class NoteController extends Controller
                     unlink($image);
                 }
             }
+
+
+            
             $note->delete();
         }
         return redirect('/');
@@ -99,7 +123,7 @@ class NoteController extends Controller
         
             
             $oldCover = public_path('storage/' . $note->cover);
-            if (File::exists($oldCover)) {
+            if (File::exists($oldCover)&& $note->cover) {
                 unlink($oldCover);
             }
         } else {
@@ -135,7 +159,7 @@ class NoteController extends Controller
 
             
             
-                    return view('Home',['notes'=>$public_notes,'user'=>$user]);
+                    return view('communityNotes',['notes'=>$public_notes,'user'=>$user]);
        
     }
 }
