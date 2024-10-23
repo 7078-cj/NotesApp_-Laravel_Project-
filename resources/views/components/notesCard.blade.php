@@ -59,7 +59,7 @@
 </div> --}}
 
 <a href="/note/{{ $note->id }}">
-  <div class="relative flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-80">
+  <div class="relative flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-80 transition hover:scale-105">
     @if ($note->cover)
     <div class="relative h-56 m-2.5 overflow-hidden text-white rounded-md">
      

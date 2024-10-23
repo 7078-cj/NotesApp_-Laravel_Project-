@@ -9,7 +9,8 @@
                           Notes
                         </a>
                 </h1>
-                <div class="flex flex-row gap-5 items-center justify-center">
+                <div class="flex flex-row gap-5 items-center justify-center hidden  md:flex lg:flex xl:flex  ">
+                    
                     <div class = "headTags personal">
                         <p><a href="/" class="flex flex-row gap-2 items-center justify-center">
                             <img src="{{ asset('storage/' . Auth::user()->avatar) }}" class="h-20 w-20 rounded-full" alt="">
@@ -24,7 +25,7 @@
                   
               </div>
     </nav>
-    <div class="hidden flex flex-col gap-2 absolute z-10 right-40 top-40" id="profileCard">
+    <div class="hidden flex flex-col items-center justify-center gap-2 absolute z-10 right-10 top-40" id="profileCard">
         <div class="relative w-[300px] min-h-[400px] p-5 bg-cover bg-center rounded-lg shadow-lg border-5 border-white overflow-hidden bg-slate-50"
             style="{{ Auth::user()->avatar ? 'background-image: url(' . asset('storage/' . Auth::user()->avatar) . ');' : 'background-image: url(' . asset('storage/uploads/image/nullUser.png') . ');' }}">
         
