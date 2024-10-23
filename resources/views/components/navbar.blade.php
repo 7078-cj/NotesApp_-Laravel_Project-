@@ -9,23 +9,39 @@
                           Notes
                         </a>
                 </h1>
-                <div class="flex flex-row gap-5">
+                <div class="flex flex-row gap-5 items-center justify-center">
                     <div class = "headTags personal">
-                        <p><a href="/" class="">{{ Auth::user()->name }}'s Notes</a></p>
+                        <p><a href="/" class="flex flex-row gap-2 items-center justify-center">
+                            <img src="{{ asset('storage/' . Auth::user()->avatar) }}" class="h-20 w-20 rounded-full" alt="">
+                            {{ Auth::user()->name }}'s Notes</a></p>
                     </div>
                     <div class = "headTags community">
                         <p><a href="/communityNotes" class="text-md">Community</a></p>
                     </div>
                 </div>
-              <div class="flex flex-row gap-5 items-center">
-                    @if (Auth::user()->avatar)
-                        <img src="{{ asset('storage/' . Auth::user()->avatar) }}" alt="" class="h-20 w-20 rounded-full  ring-2 ring-gray-400 m-4">
-                    @endif
-                    <a href="/editUser/{{ Auth::user()->id }}"><h3>Welcome!! {{ Auth::user()->name }} </h3></a>
-                    <form action="/logout" method="POST" class="">
-                        @csrf
-                        <button class=" bg-slate-200 border p-2 rounded-md mt-5 justify-center">logout</button>
-                    </form>
+              <div class="flex flex-row gap-5 items-center cursor-pointer bg-slate-200 p-5 rounded-full" id="profile">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M12 2a5 5 0 1 0 5 5 5 5 0 0 0-5-5zm0 8a3 3 0 1 1 3-3 3 3 0 0 1-3 3zm9 11v-1a7 7 0 0 0-7-7h-4a7 7 0 0 0-7 7v1h2v-1a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v1z"></path></svg>
+                  
               </div>
     </nav>
+    <div class="hidden flex flex-col gap-2 absolute z-10 right-40 top-40" id="profileCard">
+        <div class="relative w-[300px] min-h-[400px] p-5 bg-cover bg-center rounded-lg shadow-lg border-5 border-white overflow-hidden bg-slate-50"
+            style="{{ Auth::user()->avatar ? 'background-image: url(' . asset('storage/' . Auth::user()->avatar) . ');' : 'background-image: url(' . asset('storage/uploads/image/nullUser.png') . ');' }}">
+        
 
+            <div class="absolute inset-0 bg-black bg-opacity-50 z-0"></div>
+            <h3 class="absolute bottom-[140px] left-0 right-0 text-white text-center z-10 text-lg">{{ Auth::user()->name }}</h3>
+            <p class="absolute bottom-[115px] left-0 right-0 text-white text-center z-10 text-sm">{{ Auth::user()->email }}</p>
+            <div class="absolute bottom-5 left-0 right-0 w-full px-5 box-border z-10 ">
+                <a href="/editUser/{{ Auth::user()->id }}" class="flex justify-center items-center block w-full p-2 rounded-lg text-white text-sm mb-2 bg-gradient-to-r from-blue-300 to-blue-900 hover:opacity-80">Edit Profile</a>
+                <form action="/logout" method="POST" class="">
+                    @csrf
+                    <button class=" block w-full p-2 rounded-lg text-white text-sm bg-gradient-to-r from-blue-500 to-blue-900 hover:opacity-80">logout</button>
+                </form>
+            
+            </div>
+    </div>
+    </div>
+    
+
+    @vite('resources/js/navbar.js')

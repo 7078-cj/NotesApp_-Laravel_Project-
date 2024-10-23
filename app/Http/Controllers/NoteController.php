@@ -95,6 +95,16 @@ class NoteController extends Controller
                     unlink($image);
                 }
             }
+            
+            $bodies = $body = $note->body()->get();
+            foreach($bodies as $body){
+                if (!is_null($body->image)){
+                    $image = public_path('storage/'.$body->image);
+                    if (File::exists($image)){
+                        unlink($image);
+                    }
+                }
+            }
 
 
             
