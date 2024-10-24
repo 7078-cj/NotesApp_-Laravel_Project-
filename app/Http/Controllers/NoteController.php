@@ -109,9 +109,13 @@ class NoteController extends Controller
                     }
                 }
             }
-
-                    BookMark::where('note_id', $note->id)
+            
+            if(BookMark::where('note_id', $note->id)
+            ->exists()){
+                BookMark::where('note_id', $note->id)
                       ->delete();
+            }
+                   
 
 
             $note->delete();
