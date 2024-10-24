@@ -9,7 +9,7 @@
                         
                         <div id="menu" class="flex flex-col md:hidden lg:hidden xl:hidden">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"></path></svg>
-                            <div id="menuCard" class="hidden rounded-lg bg-slate-50 absolute p-20 w-30 mt-20 left-4 flex flex-col gap-9 ">
+                            <div id="menuCard" class="hidden rounded-lg bg-slate-50 absolute p-20 w-30 mt-20 left-4 flex flex-col gap-9 z-10 ">
                                 <div class = "headTags personal">
                                     <p><a href="/" class="flex flex-row gap-2 items-center justify-center">
                                         

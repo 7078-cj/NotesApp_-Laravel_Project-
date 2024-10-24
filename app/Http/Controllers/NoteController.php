@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Body;
 use App\Models\Note;
+use App\Models\Bookmark;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
@@ -88,6 +89,8 @@ class NoteController extends Controller
         }
         return view('delete-Note',['note' => $note]);
     }
+
+
     public function deleteNote(Note $note) {
         if (auth()->guard('web')->user()->id === $note['user_id']) {
             if (!is_null($note->cover)){
@@ -107,9 +110,7 @@ class NoteController extends Controller
                 }
             }
 
-            Auth::user()->bookmarks()
-                      ->where('note_id', $note->id)
-                      ->where('user_id', Auth::user()->id)
+                    BookMark::where('note_id', $note->id)
                       ->delete();
 
 
