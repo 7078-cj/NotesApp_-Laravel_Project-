@@ -4,7 +4,7 @@
 
 @include('components.navbar')   
 <div class="flex flex-row flex-1 gap-3 max-h-full bg-gradient-to-b from-indigo-500 to-sky-300">
-        <div class="hidden  md:inline-block lg:inline-block xl:inline-block ">
+        <div class=" md:inline-block lg:inline-block xl:inline-block ">
             @include('components.leftMenu')
         </div>
         
@@ -19,7 +19,7 @@
         </div>
         <div class="flex flex-row fixed items-center justify-center align-top gap-2  -bottom-10 -right z-10 mb-12 ">
           <div class=" bg-gradient-to-b from-indigo-200 to-sky-300 ring-1 m-4 p-15 rounded-full
-              md:hidden lg:hidden">
+              ">
 
           
             <button
@@ -28,8 +28,8 @@
               >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="50px"
-              height="50px"
+              width="70px"
+              height="70px"
               viewBox="0 0 24 24"
               class="stroke-slate-500 fill-none "
               >
@@ -43,7 +43,7 @@
           </button>
         </div>
 
-          <div id="createNote" class="hidden  md:hidden lg:hidden xl:hidden ">
+          <div id="createNote" class="hidden">
             @include("components.createNote")
           </div>
 

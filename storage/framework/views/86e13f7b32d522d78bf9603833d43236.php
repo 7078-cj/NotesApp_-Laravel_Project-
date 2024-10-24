@@ -1,6 +1,6 @@
 
 
-    <aside class="flex flex-col  h-full gap-40 items-center justify-center bg-slate-100">
+    <aside id="menuCard" class="hidden flex flex-col  h-full gap-40 items-center justify-start bg-slate-100">
        
          <?php echo $__env->make("components.createNote", \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
    

@@ -24,7 +24,7 @@
             
             <div class="flex flex-col gap-3 items-center justify-center text-center mt-4 text-gray-600 p-5 md:flex-row lg:flex-row xl:flex-row">
                 <h3 class="flex flex-row items-center justify-center text-center ">Notes Creator: <?php if($note->user->avatar): ?>
-                    <img src="<?php echo e(asset('storage/' . $note->user->avatar)); ?>" alt="" class="h-30 w-30 rounded-full p-4">
+                    <img src="<?php echo e(asset('storage/' . $note->user->avatar)); ?>" alt="" class="h-20 w-20 rounded-full p-4">
                 <?php endif; ?><?php echo e($note->user->name); ?></h3>
                 <h1 class="hidden md:inline lg:inline xl:inline ">
                     ||
