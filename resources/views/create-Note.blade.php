@@ -2,7 +2,7 @@
 @include('components.navbar')
 
 
-  <div class="bg-white border border-4 rounded-lg shadow relative m-10">
+  <div class="bg-white border border-4 rounded-lg shadow relative m-10 font-robotoMono">
 
     <div class="flex items-start justify-between p-5 border-b rounded-t">
         <h3 class="text-xl font-semibold">

@@ -1,5 +1,5 @@
 @extends('index')
-<div class="flex flex-col flex-1 max-w-screem max-h-full">
+<div class="flex flex-col flex-1 max-w-screem max-h-full font-robotoMono">
 
 
 @include('components.navbar')   
