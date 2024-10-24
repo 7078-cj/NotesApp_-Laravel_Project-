@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Body;
 use App\Models\Note;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 
 class NoteController extends Controller
@@ -106,8 +107,12 @@ class NoteController extends Controller
                 }
             }
 
+            Auth::user()->bookmarks()
+                      ->where('note_id', $note->id)
+                      ->where('user_id', Auth::user()->id)
+                      ->delete();
 
-            
+
             $note->delete();
         }
         return redirect('/');

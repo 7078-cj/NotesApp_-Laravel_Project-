@@ -4,7 +4,7 @@
 <?php echo $__env->make('components.navbar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>   
 <div class="flex flex-row flex-1 gap-3 max-h-full bg-gradient-to-b from-indigo-500 to-sky-300">
         <div class="hidden  md:inline-block lg:inline-block xl:inline-block ">
-            <?php echo $__env->make('components.leftMenu', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>    
+            <?php echo $__env->make('components.leftMenu', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
         </div>
         
         <div class="min-h-screen pt-4">

@@ -24,12 +24,16 @@
           type="file"
           name="cover"
           class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium">
-        
+          
+          <br>
+          
+          <label for="Description">Description:</label>
         <textarea
           placeholder="Description"
           class="bg-gray-100 text-gray-800 border-0 rounded-md p-2 mb-4 focus:bg-gray-200 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
           name="description"></textarea>
-
+          
+          <label for="message">Note's 1st message:</label>
           <textarea id="comment" name="message" class="w-full text-sm text-gray-900 bg-white border-0 dark:bg-slate-200 focus:ring-0  dark:placeholder-slate-400 px-5 py-2.5 text-center" placeholder="Write a content..."  ></textarea>
 
         <button

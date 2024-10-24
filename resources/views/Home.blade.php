@@ -5,7 +5,7 @@
 @include('components.navbar')   
 <div class="flex flex-row flex-1 gap-3 max-h-full bg-gradient-to-b from-indigo-500 to-sky-300">
         <div class="hidden  md:inline-block lg:inline-block xl:inline-block ">
-            @include('components.leftMenu')    
+            @include('components.leftMenu')
         </div>
         
         <div class="min-h-screen pt-4">

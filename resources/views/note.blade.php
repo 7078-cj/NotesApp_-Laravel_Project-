@@ -22,11 +22,13 @@
             </p>
             </div>
             
-            <div class="flex flex-row gap-3 items-center justify-center text-center mt-4 text-gray-600">
-                <h3 class="flex flex-row items-center justify-center text-center">Notes Creator: @if ($note->user->avatar)
-                    <img src="{{ asset('storage/' . $note->user->avatar) }}" alt="" class="h-40 w-40 rounded-full p-4">
+            <div class="flex flex-col gap-3 items-center justify-center text-center mt-4 text-gray-600 p-5 md:flex-row lg:flex-row xl:flex-row">
+                <h3 class="flex flex-row items-center justify-center text-center ">Notes Creator: @if ($note->user->avatar)
+                    <img src="{{ asset('storage/' . $note->user->avatar) }}" alt="" class="h-30 w-30 rounded-full p-4">
                 @endif{{$note->user->name}}</h3>
-                |
+                <h1 class="hidden md:inline lg:inline xl:inline ">
+                    ||
+                </h1>
                 <h3> email:{{$note->user->email}}</h3>
                 </div>
             </div>

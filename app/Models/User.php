@@ -49,4 +49,8 @@ class User extends Authenticatable
         
         return $this->hasMany(Note::class,'user_id');
     }
+
+    public function Bookmarks(){
+        return $this->hasMany(Bookmark::class,'user_id');
+    }
 }
