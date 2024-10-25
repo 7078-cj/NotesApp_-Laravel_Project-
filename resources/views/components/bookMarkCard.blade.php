@@ -1,5 +1,5 @@
 <a href="/note/{{ $bookmark->note->id }}">
-    <div class="relative flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-80 transition hover:scale-105">
+    <div class="relative flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-80 transition hover:scale-105 font-robotoMono">
       @if ($bookmark->note->cover)
       <div class="relative h-56 m-2.5 overflow-hidden text-white rounded-md">
        

@@ -1,7 +1,7 @@
 <article class="max-w-[500px] overflow-hidden rounded-lg m-10  ">
                
               
-    <div class="bg-white p-4 sm:p-6 ">
+    <div class="bg-white p-4 sm:p-6 font-robotoMono">
       <time  class="block text-xs text-gray-500"> Created at: {{ $body->created_at }} </time>
   
       

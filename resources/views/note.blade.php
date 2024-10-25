@@ -2,7 +2,7 @@
 @include('components.navbar')
     
     <div
-    class=" bg-gradient-to-b from-cyan-100 to-indigo-300 max-w-screen bg-white border border-gray-200 "
+    class=" bg-gradient-to-b from-cyan-100 to-indigo-300 max-w-screen bg-white border border-gray-200 font-robotoMono"
     >
         
         <div class="flex-1 flex-row items-center justify-center bg-slate-50">
