@@ -58,19 +58,13 @@ class NoteController extends Controller
         $user = auth()->user();
         
 
-        if($note->visibility == "private" 
-        &&
-         auth()->guard('web')->user()->name != $note->user->name){
+        if($note->visibility == "private" && auth()->guard('web')->user()->name != $note->user->name){
             return redirect()->back();
         }
-        else{
+        else{    
+            $body = $note->body()->orderBy('created_at','asc')->get();
             
-                
-                $body = $note->body()->orderBy('created_at','asc')->get();
-                return view('note', ['note' => $note,'bodies'=>$body,'user'=>$user,]);
-            
-
-        
+            return view('note', ['note' => $note,'bodies'=>$body,'user'=>$user,]);
         }
             
     }
@@ -163,23 +157,20 @@ class NoteController extends Controller
             $notes =[];
             $user = auth()->user();
             //    $posts = Post::all();
-                    if(auth()->guard('web')->check()){
-                        $user = auth()->user();
-                        $notes = $user->userNotes()->latest()->get();
-                    }
+            if(auth()->guard('web')->check()){
+                $user = auth()->user();
+                $notes = $user->userNotes()->latest()->get();
+            }
             
-                    return view('userNotes',['notes' => $notes]);
+            return view('userNotes',['notes' => $notes]);
         
     }
     public function communityNotes(){
         
-            $user = auth()->user();
-            $public_notes=Note::where('visibility','public')->get();
+        $user = auth()->user();
+        $public_notes=Note::where('visibility','public')->get();
             
-
-            
-            
-                    return view('communityNotes',['notes'=>$public_notes,'user'=>$user]);
+        return view('communityNotes',['notes'=>$public_notes,'user'=>$user]);
        
     }
 }
