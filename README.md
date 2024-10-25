@@ -11,9 +11,11 @@ max_execution_time = 300
 memory_limit = 128M
 
 
-if the images dont show up
+
 
 delete the storage file in the public folder then run this comman
 
 
 php artisan storage:link
+
+then inside the public/storage/uploads add a "images" folder
