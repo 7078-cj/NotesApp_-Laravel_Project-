@@ -11,26 +11,29 @@
                         
                         <!--DITO YUNG KAPAG MOBILE-->
                             <div class="flex flex-row gap-2 items-center">
-                                <div id="menu" class="flex flex-col self-start md:hidden lg:hidden xl:hidden">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"></path></svg></div> 
-                                <a class="home  md:flex lg:flex xl:flex bg-white bg-opacity-60 rounded p-2 m-2 shadow text-center" href="/ ">
+                                <div id="menu" class="flex flex-col self-start md:hidden lg:hidden xl:hidden mt-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
+                                        <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"></path>
+                                    </svg>
+                                </div>
+                                <a class="home  md:flex lg:flex xl:flex bg-white bg-opacity-60 rounded p-2 m-2 shadow text-center flex " href="/ ">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
                                         <path fill-rule="evenodd" d="M12 2.25c-2.429 0-4.817.178-7.152.521C2.87 3.061 1.5 4.795 1.5 6.741v6.018c0 1.946 1.37 3.68 3.348 3.97.877.129 1.761.234 2.652.316V21a.75.75 0 0 0 1.28.53l4.184-4.183a.39.39 0 0 1 .266-.112c2.006-.05 3.982-.22 5.922-.506 1.978-.29 3.348-2.023 3.348-3.97V6.741c0-1.947-1.37-3.68-3.348-3.97A49.145 49.145 0 0 0 12 2.25ZM8.25 8.625a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25Zm2.625 1.125a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0Zm4.875-1.125a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25Z" clip-rule="evenodd" />
                                     </svg>
                                     Notes
                                 </a>
-                                <div id="menuCard" class="hidden rounded-lg bg-slate-300 bg-opacity-90 outline outline-5 outline-white absolute top-20 left-10 p-20 w-30 mt-20 flex-col gap-4 z-10 ">
+                                <div id="menuCard" class="hidden rounded-lg bg-slate-300 bg-opacity-90 outline outline-5 outline-white absolute inset-0 m-auto p-6 w-80 h-80 flex flex-col gap-10 z-10">
                                     <div class = "headTags personal">
                                         <p><a href="/" class="flex flex-row gap-2 items-center justify-center ">
-                                            <span class="bg-blue-500 border-white rounded p-2 m-2 shadow w-full text-center px-4 py-2">
+                                            <span class="bg-gradient-to-b from-blue-200 to-blue-300 border-white rounded p-2 m-2 shadow w-full max-w-xs flex flex-col items-center justify-center text-center ">
                                                 {{ Auth::user()->name }}'s Notes
                                             </span></a></p>
                                     </div>
                                     <div class = "headTags community">
-                                        <p><a href="/communityNotes" class="text-md border bg-gradient-to-t from-blue-200 to-blue-300 border-white p-2 m-2 rounded w-full text-center px-4 py-2">Community</a></p>
+                                        <p><a href="/communityNotes" class="text-md border bg-gradient-to-t from-blue-200 to-blue-300 border-white p-2 mr-2 shadow w-full max-w-xs flex flex-col items-center justify-center text-center ">Community</a></p>
                                     </div>
-                                    <div class = "headTags community">
-                                        <p><a href="/bookmarks" class="text-md border bg-gradient-to-b from-blue-200 to-blue-300  border-white p-2 m-2 roundedd w-full text-center px-4 py-2">Bookmarks</a></p>
+                                    <div class = "headTags bookmarks">
+                                        <p><a href="/bookmarks" class="text-md border bg-gradient-to-b from-blue-200 to-blue-300  border-white p-2 mr-2 shadow w-full max-w-xs flex flex-col items-center justify-center text-center ">Bookmarks</a></p>
                                     </div>
                                 </div>
                             </div>
