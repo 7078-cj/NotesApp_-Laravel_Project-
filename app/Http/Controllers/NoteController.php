@@ -84,6 +84,18 @@ class NoteController extends Controller
         return view('delete-Note',['note' => $note]);
     }
 
+    public function removeCover(Note $note){
+        if (!is_null($note->cover)){
+            $image = public_path('storage/'.$note->cover);
+            if (File::exists($image)){
+                unlink($image);
+            }
+        }
+        $note->cover = null;
+        $note->save();
+        return redirect('/');
+    }
+
 
     public function deleteNote(Note $note) {
         if (auth()->guard('web')->user()->id === $note['user_id']) {

@@ -29,8 +29,8 @@
     
             {{-- Check if the uploaded file is a video --}}
             @if(in_array($fileExtension, ['mp4', 'avi', 'mov']))
-                <video width="600" height="400"  controls class="{{$body->image ?
-                    'w-full h-90  rounded-lg mb-4':"hidden"}}">
+                <video width="600" controls class="{{$body->image ?
+                    'w-full max-h-64  rounded-lg mb-4':"hidden"}}">
                     <source src="{{ asset('storage/' . $body->image) }}" type="video/{{ $fileExtension }}">
                     Your browser does not support the video tag.
                 </video>

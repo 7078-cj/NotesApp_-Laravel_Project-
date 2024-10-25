@@ -31,6 +31,9 @@ Route::middleware('can-view-notes')->group(function (){
     Route::get('/edit-note/{note}',[NoteController::class,'getEditNote']);
     Route::put('/edit-note/{note}', [NoteController::class, 'actuallyUpdateNote']);
 
+    //remove notes cover
+    Route::delete('/removeCover/{note}', [NoteController::class, 'removeCover']);
+
     //delete Note
     Route::get('/show-delete-note/{note}', [NoteController::class, 'showDeleteNote']);
     Route::delete('/delete-note/{note}', [NoteController::class, 'deleteNote']);

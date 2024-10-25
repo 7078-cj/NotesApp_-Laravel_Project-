@@ -23,8 +23,8 @@
     
             
             <?php if(in_array($fileExtension, ['mp4', 'avi', 'mov'])): ?>
-                <video width="600" height="400"  controls class="<?php echo e($body->image ?
-                    'w-full h-90  rounded-lg mb-4':"hidden"); ?>">
+                <video width="600" controls class="<?php echo e($body->image ?
+                    'w-full max-h-64  rounded-lg mb-4':"hidden"); ?>">
                     <source src="<?php echo e(asset('storage/' . $body->image)); ?>" type="video/<?php echo e($fileExtension); ?>">
                     Your browser does not support the video tag.
                 </video>

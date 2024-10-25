@@ -5,12 +5,12 @@
         class="flex flex-col justify-end bg-gradient-to-b from-cyan-100 to-indigo-300 max-w-screen bg-white border border-gray-200 font-robotoMono min-h-screen"
     >
         
-        <div class="flex-1 flex-row items-center justify-center bg-slate-100 p-4">
+        <div class="flex flex-col items-center justify-center bg-slate-100 p-4">
             
             @if ($note->cover)
-            <div class="flex flex-col items-center justify-center h-80 m-2.5 overflow-hidden text-white rounded-md">
+            <div class="flex flex-col items-center justify-center h-80 m-2.5 w-[600px] overflow-hidden text-white rounded-md">
              
-              <img src="{{ asset('storage/' .$note->cover) }}" />
+              <img src="{{ asset('storage/' .$note->cover) }}" class=""/>
               
             </div>
             @endif
