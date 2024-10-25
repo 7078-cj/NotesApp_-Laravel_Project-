@@ -2,7 +2,7 @@
                
               
     <div class="bg-white p-10 sm:p-6 font-robotoMono">
-      <div class="flex flex-row justify-center gap-5 items-center">
+      <div class="flex flex-row flex-wrap justify-center gap-5 items-center">
         <h4 class="flex flex-row gap-1 items-center">
           <?php if($user->avatar): ?>
             <img src="<?php echo e(asset('storage/' .$body->user->avatar)); ?>" alt="" class="h-20 rounded-full p-4">
@@ -23,7 +23,7 @@
     
             
             <?php if(in_array($fileExtension, ['mp4', 'avi', 'mov'])): ?>
-                <video width="600" controls class="<?php echo e($body->image ?
+                <video width="600" height="400"  controls class="<?php echo e($body->image ?
                     'w-full h-90  rounded-lg mb-4':"hidden"); ?>">
                     <source src="<?php echo e(asset('storage/' . $body->image)); ?>" type="video/<?php echo e($fileExtension); ?>">
                     Your browser does not support the video tag.

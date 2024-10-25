@@ -2,7 +2,7 @@
 @include('components.navbar')
     
     <div
-        class=" bg-gradient-to-b from-cyan-100 to-indigo-300 max-w-screen bg-white border border-gray-200 font-robotoMono"
+        class="flex flex-col justify-end bg-gradient-to-b from-cyan-100 to-indigo-300 max-w-screen bg-white border border-gray-200 font-robotoMono min-h-screen"
     >
         
         <div class="flex-1 flex-row items-center justify-center bg-slate-100 p-4">
@@ -61,7 +61,7 @@
 
 
          
-        <div class=" flex flex-row flex-1 gap-4  flex-wrap items-center justify-center">
+        <div class=" flex flex-row flex-1 gap-4  flex-wrap items-center justify-center min-h-[250px]">
        
        
             
@@ -69,7 +69,8 @@
             @foreach ($bodies as $body )
              @include('components.bodyCard')
             @endforeach
-            <div class=" flex flex-col flex-1 items-center justify-center">
+        </div>
+            <div class=" flex flex-col bottom-1 ">
                 <form action="/create-body/{{ $note->id }}" method="POST" enctype="multipart/form-data" 
                     class="w-screen h-40 ">
                     @csrf
@@ -102,7 +103,7 @@
                 </form>
             </div>
             
-        </div>
+        
            
     
     
