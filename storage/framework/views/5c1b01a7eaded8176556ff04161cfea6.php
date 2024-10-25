@@ -54,7 +54,7 @@
         >
         <input 
           type="password" 
-          placeholder="Password" 
+          placeholder="Password( 8 characters)" 
           name="password"
           required 
           class="w-full p-3 mb-4 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"

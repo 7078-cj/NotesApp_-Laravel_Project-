@@ -17,7 +17,7 @@
                     @endforeach
                 </div>
         </div>
-        <div class="flex flex-row fixed items-center justify-center align-top gap-2  -bottom-10 -right z-10 mb-12 ">
+        <div class="flex flex-row fixed items-center justify-center align-top -bottom-10 -right z-10 mb-12 ">
           <div class=" bg-gradient-to-b from-indigo-200 to-sky-300 ring-1 m-4 p-15 rounded-full
               ">
 

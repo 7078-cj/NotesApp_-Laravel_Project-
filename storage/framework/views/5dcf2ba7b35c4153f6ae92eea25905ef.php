@@ -1,5 +1,5 @@
 <a href="/note/<?php echo e($bookmark->note->id); ?>">
-    <div class="relative flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-80 transition hover:scale-105">
+    <div class="relative flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-80 transition hover:scale-105 font-robotoMono">
       <?php if($bookmark->note->cover): ?>
       <div class="relative h-56 m-2.5 overflow-hidden text-white rounded-md">
        
@@ -56,10 +56,7 @@
           <?php endif; ?>
           <div class="flex flex-col ml-3 text-sm">
             <span class="text-slate-800 font-semibold"><?php echo e($bookmark->note->user->name); ?></span>
-            <span class="text-slate-600">
-              <?php echo e($bookmark->note->created_at); ?>
-
-            </span>
+           
           </div>
         </div>
        

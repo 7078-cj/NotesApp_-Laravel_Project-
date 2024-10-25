@@ -1,4 +1,4 @@
-<div class="flex flex-col flex-wrap items-center justify-center max-h-full p-2 font-robotoMono">
+<div class="flex flex-col flex-wrap items-center justify-center max-h-full font-robotoMono">
     <div class="w-full max-w-md bg-white rounded-lg shadow-md p-6 max-h-full animate-slide-in-bottom">
       <h2 class="text-2xl font-bold text-gray-800 mb-4">Create New Note:</h2>
 

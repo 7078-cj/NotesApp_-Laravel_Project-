@@ -13,7 +13,7 @@ class NoteController extends Controller
 {
     public function createNote(Request $request){
         $note = $request->validate([
-            'title'=>['required','string','max:20'],
+            'title'=>['required','string','max:50'],
             'description'=>['required','string',"max:100"],
             'visibility'=>['required','string'],
             'cover' => ['nullable', 'file', 'mimes:jpg,png,pdf,gif', 'max:51200'],

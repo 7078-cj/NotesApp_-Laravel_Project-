@@ -53,9 +53,7 @@
           @endif
           <div class="flex flex-col ml-3 text-sm">
             <span class="text-slate-800 font-semibold">{{ $bookmark->note->user->name }}</span>
-            <span class="text-slate-600">
-              {{ $bookmark->note->created_at }}
-            </span>
+           
           </div>
         </div>
        
