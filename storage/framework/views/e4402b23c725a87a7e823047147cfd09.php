@@ -1,15 +1,15 @@
 <?php echo $__env->make('components.navbar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     
     <div
-    class=" bg-gradient-to-b from-cyan-100 to-indigo-300 max-w-screen bg-white border border-gray-200 "
+        class="flex flex-col justify-end bg-gradient-to-b from-cyan-100 to-indigo-300 max-w-screen bg-white border border-gray-200 font-robotoMono min-h-screen"
     >
         
-        <div class="flex-1 flex-row items-center justify-center bg-slate-50">
+        <div class="flex flex-col items-center justify-center bg-slate-100 p-4">
             
             <?php if($note->cover): ?>
-            <div class="flex flex-col items-center justify-center h-80 m-2.5 overflow-hidden text-white rounded-md">
+            <div class="flex flex-col items-center justify-center h-80 m-2.5 w-[600px] overflow-hidden text-white rounded-md">
              
-              <img src="<?php echo e(asset('storage/' .$note->cover)); ?>" />
+              <img src="<?php echo e(asset('storage/' .$note->cover)); ?>" class=""/>
               
             </div>
             <?php endif; ?>
@@ -31,11 +31,37 @@
                 </h1>
                 <h3> email:<?php echo e($note->user->email); ?></h3>
                 </div>
+                <?php if($user->name === $note->user->name): ?>
+        <div class="flex flex-row justify-center gap-2 items-center py-3 ">
+          
+          
+
+          <p><a href="/edit-note/<?php echo e($note->id); ?>" class="EditBtn">
+              <div class="flex gap-2 text-slate-600 hover:scale-110 duration-200 hover:cursor-pointer">
+              <svg class="w-6 stroke-green-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+              </svg>
+              <button class="font-semibold text-sm text-green-700">Edit</button>
+          </div>
+          </a></p>
+          
+            
+                <a href="/show-delete-note/<?php echo e($note->id); ?>">
+                  <div class="flex gap-2 text-gray-600 hover:scale-110 duration-200 hover:cursor-pointer">
+                    <svg class="w-6 stroke-red-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
+                    <button class="font-semibold text-sm text-red-700">Delete</button>
+                  </div>
+                </a>
+        
+                          
+        </div>
+      <?php endif; ?>
             </div>
 
 
          
-        <div class=" flex flex-row flex-1 gap-4  flex-wrap items-center justify-center">
+        <div class=" flex flex-row flex-1 gap-4  flex-wrap items-center justify-center min-h-[250px]">
        
        
             
@@ -43,7 +69,8 @@
             <?php $__currentLoopData = $bodies; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $body): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
              <?php echo $__env->make('components.bodyCard', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-            <div class=" flex flex-col flex-1 items-center justify-center">
+        </div>
+            <div class=" flex flex-col bottom-1 ">
                 <form action="/create-body/<?php echo e($note->id); ?>" method="POST" enctype="multipart/form-data" 
                     class="w-screen h-40 ">
                     <?php echo csrf_field(); ?>
@@ -76,7 +103,7 @@
                 </form>
             </div>
             
-        </div>
+        
            
     
     

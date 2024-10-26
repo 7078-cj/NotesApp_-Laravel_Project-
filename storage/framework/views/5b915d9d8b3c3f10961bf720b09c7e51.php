@@ -1,4 +1,4 @@
-<body class="h-screen bg-gray-100 flex items-center justify-center m-0">
+<body class="h-screen bg-gradient-to-t from-slate-400 via-gray-700 to-gray-800 flex items-center justify-center m-0 font-robotoMono">
     <!-- Login Form -->
     <div class="container max-w-sm p-6 bg-white shadow-lg rounded-lg" id="login-form">
       <h2 class="text-center text-2xl font-semibold mb-6">Login</h2>
@@ -9,18 +9,18 @@
           placeholder="Username" 
           name="login_name"
           required 
-          class="w-full p-3 mb-4 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+          class="w-full p-3 mb-4 border border-gray-400 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
         <input 
           type="password" 
           placeholder="Password" 
           name="login_password"
           required 
-          class="w-full p-3 mb-4 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+          class="w-full p-3 mb-4 border border-gray-400 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
         <button 
           type="submit" 
-          class="w-full p-3 bg-cyan-200 text-black font-semibold rounded hover:bg-cyan-500"
+          class="w-full p-3 bg-cyan-300 text-black font-semibold rounded hover:bg-cyan-500"
         >
           Login
         </button>
@@ -54,7 +54,7 @@
         >
         <input 
           type="password" 
-          placeholder="Password" 
+          placeholder="Password( 8 characters)" 
           name="password"
           required 
           class="w-full p-3 mb-4 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"

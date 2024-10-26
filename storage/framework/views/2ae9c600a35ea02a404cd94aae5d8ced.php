@@ -1,6 +1,6 @@
 
-<a href="/note/<?php echo e($note->id); ?>">
-  <div class="relative flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-80 transition hover:scale-105">
+<a href="/note/<?php echo e($note->id); ?> ">
+  <div class="relative flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-80 transition hover:scale-105 font-robotoMono">
     <?php if($note->cover): ?>
     <div class="relative h-56 m-2.5 overflow-hidden text-white rounded-md">
      
@@ -10,6 +10,7 @@
     <?php endif; ?>
     <div class="p-4">
       <div class="flex flex-row justify-end gap-4">
+        
         <div class="mb-4 rounded-full <?php echo e($note->visibility=="public" ? "bg-blue-400":"bg-red-400"); ?> py-0.5 px-2.5 border border-transparent text-xs text-white transition-all shadow-sm w-20 text-center">
           <?php echo e($note->visibility); ?>
 
@@ -64,10 +65,7 @@
         <?php endif; ?>
         <div class="flex flex-col ml-3 text-sm">
           <span class="text-slate-800 font-semibold"><?php echo e($note->user->name); ?></span>
-          <span class="text-slate-600">
-            <?php echo e($note->created_at); ?>
-
-          </span>
+          
         </div>
       </div>
       <?php if($user->name === $note->user->name): ?>

@@ -1,8 +1,16 @@
 <article class="max-w-[500px] overflow-hidden rounded-lg m-10  ">
                
               
-    <div class="bg-white p-4 sm:p-6 ">
-      <time  class="block text-xs text-gray-500"> Created at: <?php echo e($body->created_at); ?> </time>
+    <div class="bg-white p-10 sm:p-6 font-robotoMono">
+      <div class="flex flex-row flex-wrap justify-center gap-5 items-center">
+        <h4 class="flex flex-row gap-1 items-center">
+          <?php if($user->avatar): ?>
+            <img src="<?php echo e(asset('storage/' .$body->user->avatar)); ?>" alt="" class="h-20 rounded-full p-4">
+        <?php endif; ?>
+        <?php echo e($body->user->name); ?></h4>
+        <time  class="block text-xs text-gray-500"> Created at: <?php echo e($body->created_at); ?> </time>
+      </div>
+      
   
       
         <div class="mt-0.5 text-lg text-gray-900  gap-3 m-5 flex flex-col"> 
@@ -16,7 +24,7 @@
             
             <?php if(in_array($fileExtension, ['mp4', 'avi', 'mov'])): ?>
                 <video width="600" controls class="<?php echo e($body->image ?
-                    'w-full h-80  rounded-lg mb-4':"hidden"); ?>">
+                    'w-full max-h-64  rounded-lg mb-4':"hidden"); ?>">
                     <source src="<?php echo e(asset('storage/' . $body->image)); ?>" type="video/<?php echo e($fileExtension); ?>">
                     Your browser does not support the video tag.
                 </video>
@@ -27,21 +35,12 @@
             <?php endif; ?>
             
             <?php endif; ?>
-            <p class=" text-gray-600 m-5 break-words text-center"><?php echo e($body->message); ?> </p>
+            <pre class=" text-gray-600 m-1 break-words text-center"><?php echo e($body->message); ?> </pre>
         
         </div>
         
         <div class="">
-            <div class="flex flex-row flex-wrap justify-center gap-20 mt-2 line-clamp-3 text-sm/relaxed text-gray-500 ">
-                <h4 class="flex flex-row gap-5 items-center">Sent By:
-                  <?php if($user->avatar): ?>
-                    <img src="<?php echo e(asset('storage/' .$body->user->avatar)); ?>" alt="" class="h-20 rounded-full p-4">
-                <?php endif; ?>
-                <?php echo e($body->user->name); ?></h4>
-                <h5 class="line-clamp-3">email:<?php echo e($body->user->email); ?></h5>
-                
-                
-              </div>
+            
               <?php if($user->name === $body->user->name || $user->name === $body->note->user->name ): ?>
                     <div >
                         

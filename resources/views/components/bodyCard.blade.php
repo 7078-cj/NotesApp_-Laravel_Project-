@@ -41,7 +41,7 @@
             @endif
             
             @endif
-            <p class=" text-gray-600 m-1 break-words text-center">{{ $body->message }} </p>
+            <pre class=" text-gray-600 m-1 break-words text-center">{{ $body->message }} </pre>
         
         </div>
         {{-- footer --}}

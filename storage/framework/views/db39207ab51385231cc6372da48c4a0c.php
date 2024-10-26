@@ -1,4 +1,4 @@
-<div class="flex flex-col flex-1 max-w-screem max-h-full">
+<div class="flex flex-col flex-1 max-w-screem max-h-full font-robotoMono">
 
 
 <?php echo $__env->make('components.navbar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>   
@@ -16,7 +16,7 @@
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </div>
         </div>
-        <div class="flex flex-row fixed items-center justify-center align-top gap-2  -bottom-10 -right z-10 mb-12 ">
+        <div class="flex flex-row fixed items-center justify-center align-top -bottom-10 -right z-10 mb-12 ">
           <div class=" bg-gradient-to-b from-indigo-200 to-sky-300 ring-1 m-4 p-15 rounded-full
               ">
 
