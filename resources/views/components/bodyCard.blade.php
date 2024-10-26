@@ -1,7 +1,7 @@
-<article class="max-w-[500px] overflow-hidden rounded-lg m-10  ">
+<article class="max-w-[600px] overflow-hidden rounded-lg m-5 flex-grow sm:h-64 md:h-auto lg:h-auto xl:h-auto  ">
                
               
-    <div class="bg-white p-10 sm:p-6 font-robotoMono">
+    <div class="bg-white font-robotoMono">
       <div class="flex flex-row flex-wrap justify-center gap-5 items-center">
         <h4 class="flex flex-row gap-1 items-center">
           @if ($user->avatar)
@@ -13,7 +13,7 @@
       
   
       
-        <div class="mt-0.5 text-lg text-gray-900  gap-3 m-5 flex flex-col"> 
+        <div class="mt-0.5 text-lg text-gray-900  gap-3 m-5 flex flex-col flex-1"> 
             @if ($body->image)
                 {{-- <div>
                 <img
@@ -29,26 +29,26 @@
     
             {{-- Check if the uploaded file is a video --}}
             @if(in_array($fileExtension, ['mp4', 'avi', 'mov']))
-                <video width="600" controls class="{{$body->image ?
-                    'w-full max-h-64  rounded-lg mb-4':"hidden"}}">
+                <video  controls class="{{$body->image ?
+                    'w-full max-h-[600px]  rounded-lg mb-4':"hidden"}}">
                     <source src="{{ asset('storage/' . $body->image) }}" type="video/{{ $fileExtension }}">
                     Your browser does not support the video tag.
                 </video>
             @else
                 {{-- If it's not a video, display it as an image --}}
                 <img src="{{ asset('storage/' . $body->image) }}" alt="Uploaded Image" width="300" class="{{$body->image ?
-                    'w-full h-80  rounded-lg mb-4':"hidden"}}">
+                    'w-full max-h-80 min-h-40  rounded-lg mb-4':"hidden"}}">
             @endif
             
             @endif
-            <pre class=" text-gray-600 m-1 break-words text-center">{{ $body->message }} </pre>
+            <pre class=" text-gray-600 m-1 break-words text-center p-4">{{ $body->message }} </pre>
         
         </div>
         {{-- footer --}}
         <div class="">
             
               @if ($user->name === $body->user->name || $user->name === $body->note->user->name )
-                    <div >
+                    
                         
 
                     <div class="flex flex-row justify-center gap-2 items-center py-3">
@@ -75,7 +75,7 @@
                                                
                             </form>
                           </div>
-                    </div>
+                    
                 @endif 
         </div>
       

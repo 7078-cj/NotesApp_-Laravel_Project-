@@ -23,7 +23,7 @@
           
             <button
             id="addNew"
-            class="group cursor-pointer outline-none active:rotate-90 duration-300"
+            class="group cursor-pointer outline-none hover:rotate-90 duration-300"
               >
             <svg
               xmlns="http://www.w3.org/2000/svg"

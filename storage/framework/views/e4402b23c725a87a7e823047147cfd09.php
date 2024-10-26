@@ -7,16 +7,16 @@
         <div class="flex flex-col items-center justify-center bg-slate-100 p-4">
             
             <?php if($note->cover): ?>
-            <div class="flex flex-col items-center justify-center h-80 m-2.5 w-[600px] overflow-hidden text-white rounded-md">
+            <div class="flex flex-col items-center justify-center h-80 m-2.5 max-w-[500px] overflow-hidden text-white rounded-md">
              
               <img src="<?php echo e(asset('storage/' .$note->cover)); ?>" class=""/>
               
             </div>
             <?php endif; ?>
             
-            <div class="flex flex-col items-center">
+            <div class="flex flex-col items-center justify-center">
                 <p class="text-xl font-semibold text-gray-800"><?php echo e($note->title); ?></p>
-            <p class="mt-2 text-gray-600">
+            <p class="mt-2 text-gray-600 text-center">
                 <?php echo e($note->description); ?>
 
             </p>
@@ -72,7 +72,7 @@
         </div>
             <div class=" flex flex-col bottom-1 ">
                 <form action="/create-body/<?php echo e($note->id); ?>" method="POST" enctype="multipart/form-data" 
-                    class="w-screen h-40 ">
+                    class="h-40 ">
                     <?php echo csrf_field(); ?>
                    
                     <div class="w-full border border-gray-200 rounded-lg bg-gray-50 dark:bg-slate-400 dark:border-slate-400">
