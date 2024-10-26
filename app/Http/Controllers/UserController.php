@@ -136,6 +136,17 @@ class UserController extends Controller
                 $note->delete();
             }
 
+            //to delete the images or vids sent by the user
+            $userBodies = $user->Bodies()->latest()->get();
+            foreach($userBodies as $userBody){
+                if (!is_null($userBody->image)){
+                    $image = public_path('storage/'.$userBody->image);
+                    if (File::exists($image)){
+                        unlink($image);
+                    }
+                }
+            }
+
             //for the bookmarked note from other users
             $bookmarks = $user->Bookmarks()->latest()->get();
             foreach($bookmarks as $bookmark){

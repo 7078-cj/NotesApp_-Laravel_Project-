@@ -53,4 +53,8 @@ class User extends Authenticatable
     public function Bookmarks(){
         return $this->hasMany(Bookmark::class,'user_id');
     }
+    
+    public function Bodies(){
+        return $this->hasMany(Body::class,'user_id');
+    }
 }
