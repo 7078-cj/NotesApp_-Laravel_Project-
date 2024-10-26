@@ -1,3 +1,4 @@
+<pre>
 to post more than 2mb u need to change these in the php.ini
 <br>
 
@@ -18,4 +19,7 @@ delete the storage file in the public folder then run this comman
 
 php artisan storage:link
 
+
+(if images folder is missing)
 then inside the public/storage/uploads add a "images" folder
+</pre>
