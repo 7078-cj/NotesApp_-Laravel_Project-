@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+
+use App\Models\Bookmark;
+use App\Models\Note;
 use App\Models\User;
-use Illuminate\Validation\Rule;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
@@ -85,6 +89,10 @@ class UserController extends Controller
         
         return redirect('/');
     }
+    public function showDeleteNote(User $user){
+       
+        return view('delete-User',['user' => $user]);
+    }
 
     public function deleteUser(User $user,Request $request){
         if (auth()->guard('web')->check()) {
@@ -94,9 +102,52 @@ class UserController extends Controller
                     unlink($avatar);
                 }
             }
+            $user = auth()->user();
+            $userNotes = $user->userNotes()->latest()->get();
+
+            foreach($userNotes as $userNote){
+
+                $note = Note::find($userNote->id);
+
+                if (!is_null($note->cover)){
+                    $image = public_path('storage/'.$note->cover);
+                    if (File::exists($image)){
+                        unlink($image);
+                    }
+                }
+                
+                $bodies = $body = $note->body()->get();
+                foreach($bodies as $body){
+                    if (!is_null($body->image)){
+                        $image = public_path('storage/'.$body->image);
+                        if (File::exists($image)){
+                            unlink($image);
+                        }
+                    }
+                }
+
+                //for the user created note to delete to other users bookmark
+                if(BookMark::where('note_id', $note->id)
+                 ->exists()){
+                BookMark::where('note_id', $note->id)
+                      ->delete();
+            }
+                
+                $note->delete();
+            }
+
+            //for the bookmarked note from other users
+            $bookmarks = $user->Bookmarks()->latest()->get();
+            foreach($bookmarks as $bookmark){
+                $bm = Bookmark::find($bookmark->id);
+                $bm->delete();
+            }
+            
+            
+
             $user->delete();
         }
-        return  redirect()->back();
+        return  redirect('login-user');
     }
     
 }

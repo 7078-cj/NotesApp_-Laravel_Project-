@@ -49,6 +49,8 @@ Route::middleware('can-view-notes')->group(function (){
     //user
     Route::get('/editUser/{user}',[UserController::class,'editUser']);
     Route::put('/updateUser/{user}',[UserController::class,'updateUser']);
+    Route::delete('/deleteUser/{user}',[UserController::class,'deleteUser']);
+    Route::get('/showDeleteUser/{user}',[UserController::class,'showDeleteNote']);
 
     //bookmark
     Route::get('/bookmarks',[BookmarkController::class, 'showBookMark']);

@@ -6,6 +6,7 @@
         <h3 class="text-xl font-semibold">
             Edit User
         </h3>
+        <a href="/showDeleteUser/{{ Auth::user()->id }}" class="text-white bg-slate-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Deactivate User</a>
         <a href="#" onclick="history.back()"><button class="text-white bg-slate-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center" >Back</button></a>
         
     </div>
