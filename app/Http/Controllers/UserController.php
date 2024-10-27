@@ -95,7 +95,7 @@ class UserController extends Controller
     }
 
     public function deleteUser(User $user,Request $request){
-        if (auth()->guard('web')->check()) {
+        if (auth()->guard('web')->check() && auth()->guard('web')->user()->name == $user->name ) {
             if (!is_null($user->avatar)){
                 $avatar = public_path('storage/'.$user->avatar);
                 if (File::exists($avatar)){

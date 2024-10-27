@@ -122,8 +122,6 @@ class NoteController extends Controller
                       ->delete();
             }
                    
-
-
             $note->delete();
         }
         return redirect('/');

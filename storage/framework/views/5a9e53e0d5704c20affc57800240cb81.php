@@ -78,6 +78,7 @@
                 <form action="/logout" method="POST" class="">
                     <?php echo csrf_field(); ?>
                     <button class=" block w-full p-2 rounded-lg text-white text-sm bg-gradient-to-r from-blue-500 to-blue-500 hover:opacity-80">logout</button>
+                    
                 </form>
             
             </div>
